@@ -1,0 +1,108 @@
+field_name,datatype,entity,description,unit,allowed_range,categorical_values,source_type,availability_stage,label_related,leakage_risk,required
+org_id,string,organization,Organization UUID,,UUID,,identity,pre-event,no,high,yes
+project_id,string,project,Project UUID scoped to organization,,UUID,,identity,pre-event,no,high,yes
+environment_id,string,environment,Environment UUID,,UUID,,identity,pre-event,no,high,yes
+environment,string,environment,Execution environment,,development|staging|production|test,development|staging|production|test,context,pre-event,no,low,yes
+region,string,environment,Logical region,,,categorical,context,pre-event,no,low,no
+service_id,string,service,Service UUID,,UUID,,identity,pre-event,no,high,yes
+host_id,string,host,Host or node UUID,,UUID,,identity,pre-event,no,high,yes
+workload_id,string,workload,Workload UUID,,UUID,,identity,pre-event,no,high,yes
+deployment_id,string,deployment,Deployment UUID,,UUID,,identity,pre-event,no,high,no
+deployment_frequency,float,service,Deployments per day,per_day,>=0,,raw,pre-event,no,low,no
+deployment_age_seconds,float,deployment,Age since deployment start,seconds,>=0,,derived,pre-event,no,low,no
+version_age_seconds,float,deployment,Age of running version,seconds,>=0,,derived,pre-event,no,low,no
+change_size,integer,deployment,Changed-unit count,count,>=0,,raw,pre-event,no,low,no
+config_change_count,integer,deployment,Configuration changes,count,>=0,,raw,pre-event,no,low,no
+rollback_count,integer,deployment,Prior rollback count,count,>=0,,raw,pre-event,no,medium,no
+pipeline_id,string,pipeline,Pipeline UUID,,UUID,,identity,pre-event,no,high,no
+job_id,string,job,Job UUID,,UUID,,identity,pre-event,no,high,no
+pipeline_duration_seconds,float,pipeline,Elapsed pipeline duration,seconds,>=0,,raw,pre-event,no,low,no
+queue_time_seconds,float,pipeline,Queue delay,seconds,>=0,,raw,pre-event,no,low,no
+build_duration_seconds,float,job,Build duration before final status,seconds,>=0,,raw,pre-event,no,low,no
+test_duration_seconds,float,job,Test duration before final status,seconds,>=0,,raw,pre-event,no,low,no
+deployment_duration_seconds,float,deployment,Deployment duration,seconds,>=0,,raw,pre-event,no,low,no
+retry_count,integer,job,Retries observed so far,count,>=0,,raw,pre-event,no,medium,no
+job_count,integer,pipeline,Jobs in pipeline,count,>=0,,raw,pre-event,no,low,no
+step_count,integer,job,Steps in job,count,>=0,,raw,pre-event,no,low,no
+artifact_count,integer,pipeline,Artifacts produced so far,count,>=0,,raw,pre-event,no,low,no
+dependency_count,integer,service,Declared dependencies,count,>=0,,raw,pre-event,no,low,no
+cpu_utilization,float,host,CPU utilization,fraction,0..1,,raw,pre-event,no,low,yes
+memory_utilization,float,host,Memory utilization,fraction,0..1,,raw,pre-event,no,low,yes
+disk_utilization,float,host,Disk utilization,fraction,0..1,,raw,pre-event,no,low,no
+network_in_bytes,float,host,Inbound network bytes,bytes,>=0,,raw,pre-event,no,low,no
+network_out_bytes,float,host,Outbound network bytes,bytes,>=0,,raw,pre-event,no,low,no
+io_wait,float,host,CPU I/O wait,fraction,0..1,,raw,pre-event,no,low,no
+load_average,float,host,Normalized load average,ratio,>=0,,raw,pre-event,no,low,no
+process_count,integer,host,Process count,count,>=0,,raw,pre-event,no,low,no
+thread_count,integer,host,Thread count,count,>=0,,raw,pre-event,no,low,no
+open_connections,integer,host,Open connections,count,>=0,,raw,pre-event,no,low,no
+file_descriptor_usage,float,host,File descriptor usage,fraction,0..1,,raw,pre-event,no,low,no
+task_count,integer,workload,Total tasks,count,>=0,,raw,pre-event,no,low,no
+cloud_job_count,integer,workload,Cloud workload jobs,count,>=0,,raw,pre-event,no,low,no
+instance_count,integer,workload,Active instances,count,>=0,,raw,pre-event,no,low,no
+pending_tasks,integer,workload,Pending tasks,count,>=0,,raw,pre-event,no,low,no
+running_tasks,integer,workload,Running tasks,count,>=0,,raw,pre-event,no,low,no
+failed_tasks,integer,workload,Failed tasks observed,count,>=0,,raw,during-event,yes,medium,no
+terminated_tasks,integer,workload,Terminated tasks,count,>=0,,raw,during-event,yes,medium,no
+resource_requests_cpu,float,workload,Requested CPU,normalized_cpu,>=0,,raw,pre-event,no,low,no
+resource_requests_memory,float,workload,Requested memory,normalized_memory,>=0,,raw,pre-event,no,low,no
+resource_usage_cpu,float,workload,Used CPU,normalized_cpu,>=0,,raw,pre-event,no,low,no
+resource_usage_memory,float,workload,Used memory,normalized_memory,>=0,,raw,pre-event,no,low,no
+scheduling_delay_seconds,float,workload,Scheduling delay,seconds,>=0,,raw,pre-event,no,low,no
+queue_length,integer,workload,Workload queue length,count,>=0,,raw,pre-event,no,low,no
+node_pressure,float,host,Aggregated node pressure,fraction,0..1,,derived,pre-event,no,medium,no
+restart_count,integer,workload,Restart count,count,>=0,,raw,pre-event,no,medium,no
+eviction_count,integer,workload,Eviction count,count,>=0,,raw,during-event,yes,medium,no
+src_ip_group,string,network,Anonymized source group,,,group token,raw,pre-event,no,high,no
+dst_ip_group,string,network,Anonymized destination group,,,group token,raw,pre-event,no,high,no
+src_port,integer,network,Source port,port,0..65535,,raw,pre-event,no,low,no
+dst_port,integer,network,Destination port,port,0..65535,,raw,pre-event,no,low,no
+protocol,string,network,Network protocol,,,tcp|udp|icmp|other,raw,pre-event,no,low,no
+service,string,network,Service category,,,categorical,raw,pre-event,no,low,no
+connection_count,integer,network,Connections in window,count,>=0,,aggregated,pre-event,no,low,no
+flow_duration_seconds,float,network,Flow duration,seconds,>=0,,raw,during-event,no,low,no
+bytes_in,float,network,Inbound flow bytes,bytes,>=0,,raw,during-event,no,low,no
+bytes_out,float,network,Outbound flow bytes,bytes,>=0,,raw,during-event,no,low,no
+packets_in,integer,network,Inbound packets,count,>=0,,raw,during-event,no,low,no
+packets_out,integer,network,Outbound packets,count,>=0,,raw,during-event,no,low,no
+packet_rate,float,network,Packets per second,packets_per_second,>=0,,derived,pre-event,no,medium,no
+byte_rate,float,network,Bytes per second,bytes_per_second,>=0,,derived,pre-event,no,medium,no
+connection_rate,float,network,Connections per second,connections_per_second,>=0,,derived,pre-event,no,medium,no
+auth_attempts,integer,security,Authentication attempts,count,>=0,,aggregated,pre-event,no,low,no
+failed_auth_attempts,integer,security,Failed authentication attempts,count,>=0,,aggregated,pre-event,no,medium,no
+successful_auth_attempts,integer,security,Successful authentication attempts,count,>=0,,aggregated,pre-event,no,low,no
+unique_source_count,integer,security,Unique source groups,count,>=0,,derived,pre-event,no,medium,no
+credential_failure_rate,float,security,Failed authentication ratio,fraction,0..1,,derived,pre-event,no,medium,no
+unique_destination_ports,integer,security,Distinct destination ports,count,>=0,,derived,pre-event,no,low,no
+unique_destination_hosts,integer,security,Distinct destination hosts,count,>=0,,derived,pre-event,no,low,no
+connection_attempt_rate,float,security,Connection attempts per second,connections_per_second,>=0,,derived,pre-event,no,medium,no
+port_entropy,float,security,Destination port entropy,bits,>=0,,derived,pre-event,no,low,no
+host_entropy,float,security,Destination host entropy,bits,>=0,,derived,pre-event,no,low,no
+scan_burst_score,float,security,Noisy scan burst score,score,0..1,,derived,pre-event,no,medium,no
+request_rate,float,security,Requests per second,requests_per_second,>=0,,aggregated,pre-event,no,medium,no
+source_count,integer,security,Distinct traffic sources,count,>=0,,aggregated,pre-event,no,medium,no
+source_entropy,float,security,Source distribution entropy,bits,>=0,,derived,pre-event,no,low,no
+traffic_volume_bytes,float,security,Traffic volume,bytes,>=0,,aggregated,pre-event,no,low,no
+event_timestamp,datetime,event,Canonical event time,ISO-8601,,,raw,all,no,medium,yes
+window_start,datetime,telemetry_window,Observation window start,ISO-8601,,,derived,pre-event,no,low,yes
+window_end,datetime,telemetry_window,Observation window end,ISO-8601,,,derived,pre-event,no,low,yes
+prediction_timestamp,datetime,telemetry_window,Feature cutoff time,ISO-8601,,,derived,pre-event,no,high,yes
+observation_age_seconds,float,telemetry_window,Age relative to cutoff,seconds,>=0,,derived,pre-event,no,low,no
+hour_of_day,integer,event,UTC hour,hour,0..23,,derived,pre-event,no,low,no
+day_of_week,integer,event,UTC weekday,day,0..6,,derived,pre-event,no,low,no
+cpu_delta,float,telemetry_window,CPU change in lookback,fraction,-1..1,,derived,pre-event,no,medium,no
+memory_slope,float,telemetry_window,Memory trend,fraction_per_second,,,derived,pre-event,no,medium,no
+request_rate_rolling_mean,float,telemetry_window,Rolling request mean,requests_per_second,>=0,,derived,pre-event,no,medium,no
+request_rate_rolling_std,float,telemetry_window,Rolling request deviation,requests_per_second,>=0,,derived,pre-event,no,medium,no
+failure_rate,float,telemetry_window,Observed failure ratio,fraction,0..1,,derived,pre-event,no,high,no
+retry_rate,float,telemetry_window,Observed retry ratio,fraction,0..1,,derived,pre-event,no,medium,no
+burst_score,float,telemetry_window,Generic burst score,score,0..1,,derived,pre-event,no,medium,no
+anomaly_score,float,telemetry_window,Online anomaly score,score,,,derived,pre-event,no,high,no
+incident_label,integer,incident,Current incident indicator,,0|1,,label,during-event,yes,high,yes
+incident_type,string,incident,Current incident taxonomy,,,none|D1|D2|C1|C2|C3|C4|C5,label,during-event,yes,high,yes
+future_incident_label,integer,incident,Incident in future horizon,,0|1,,label,after-event,yes,high,yes
+future_incident_time,datetime,incident,Future incident start,ISO-8601,,,label,after-event,yes,high,no
+time_to_incident,float,incident,Seconds to future incident,seconds,>=0,,label,after-event,yes,high,no
+root_cause_category,string,incident,Synthetic RCA category,,,controlled taxonomy,label,after-event,yes,high,no
+root_component,string,incident,Synthetic RCA component,,,controlled taxonomy,label,after-event,yes,high,no
+recommended_action,string,incident,Recommendation target,,,controlled taxonomy,label,after-event,yes,high,no

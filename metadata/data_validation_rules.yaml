@@ -1,0 +1,68 @@
+validation_rules_version: 1.0.0
+scope: synthetic_schema_and_future_external_mappings
+schema:
+  required_columns_source: metadata/synthetic_schema.csv
+  reject_unknown_columns: true
+  require_unique_field_names: true
+  require_contract_version: true
+datatypes:
+  datetime: ISO-8601 with explicit timezone at interchange boundary
+  identifier: UUID-style string; names are not keys
+  numeric: finite; NaN and infinity are represented as nullable missing
+nulls:
+  allowed: true
+  required_fields_may_be_null: false
+  missing_indicators_required_for: [telemetry_outage, delayed_metric]
+ranges:
+  utilization: [0, 1]
+  ports: [0, 65535]
+  binary_labels: [0, 1]
+  counts: [0, infinity]
+timestamps:
+  event_timestamp_required: true
+  window_start_before_window_end: true
+  window_end_at_or_before_prediction_timestamp: true
+  source_events_sorted_within_group: true
+  incident_start_at_or_before_incident_end: true
+  prediction_features_not_after_cutoff: true
+duplicates:
+  exact_duplicate_policy: same split only when explicitly tagged as robustness contamination
+  near_duplicate_policy: investigate and keep within one split
+  repeated_identity_time_keys: cannot cross split
+  external_unsw_reference_rate: 0.30298107
+groups:
+  required_group_keys: [organization, project, service, host, workload, incident]
+  no_group_overlap_for_entity_generalization: true
+  session_group_overlap: false
+  external_validation_group_overlap_with_development: false
+labels:
+  incident_label_values: [0, 1]
+  incident_type_values: [none, D1, D2, C1, C2, C3, C4, C5]
+  incident_label_consistent_with_type: incident_type none implies incident_label 0; D1-C5 implies incident_label 1
+  future_label_uses_open_interval: future incident target is in (prediction_timestamp, prediction_timestamp + H]
+  rca_requires_incident: root cause and component require incident_label 1
+  recommendation_requires_incident: recommended action requires incident_label 1
+leakage:
+  forbidden_predictors: [incident_label, incident_type, attack_cat, build_status, failure_status, root_cause_category, root_component, recommended_action, remediation_success, recovery_time, post_incident_metrics]
+  availability_check: every prediction feature is available at or before prediction_timestamp
+  derived_lineage_check: every derived field declares source fields, aggregation window, lookback, and availability timestamp
+  normalization_check: fit scalers and imputers on training partition only
+  external_isolation_check: UNSW files and labels are absent from development fitting and tuning inputs
+impossible_combinations:
+  - memory_utilization outside [0, 1]
+  - failed_tasks greater than task_count when both are present
+  - successful_auth_attempts greater than auth_attempts
+  - failed_auth_attempts greater than auth_attempts
+  - packet_rate present with negative flow duration
+  - incident_type none with root_cause_category or recommended_action
+  - future_incident_label 0 with negative time_to_incident
+temporal_consistency:
+  state_order_allowed: [NORMAL, EARLY_SIGNAL, DEGRADATION, INCIDENT, RECOVERY]
+  allow_state_skips: true
+  recovery_fields_not_in_prediction: true
+  incident_window_must_be_contiguous_or_explicitly_segmented: true
+external_mapping:
+  unsupported_semantics: reject rather than infer
+  source_provenance_required: true
+  UNSW_header_mapping_status: documented_only_until_independently_confirmed
+  UNSW_use: reserved external validation only

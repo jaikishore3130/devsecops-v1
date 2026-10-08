@@ -1,0 +1,108 @@
+feature,category,source,available_before_incident,available_during_incident,available_after_incident,safe_for_detection,safe_for_prediction,safe_for_rca,safe_for_remediation_model,leakage_risk,derivation
+org_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+project_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+environment,identity_context,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,raw context
+service_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+host_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+workload_id,identity_context,synthetic|documented,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+deployment_age_seconds,deployment,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,cutoff-safe elapsed time
+change_size,deployment,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,raw deployment metadata
+config_change_count,deployment,synthetic,yes,yes,yes,yes,yes,yes,yes,low,pre-cutoff count
+rollback_count,deployment,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,lookback count
+pipeline_duration_seconds,cicd,synthetic|TravisTorrent,yes,yes,yes,yes,yes,yes,yes,low,elapsed duration at cutoff
+queue_time_seconds,cicd,synthetic|TravisTorrent,yes,yes,yes,yes,yes,yes,yes,low,elapsed duration at cutoff
+build_duration_seconds,cicd,synthetic|TravisTorrent,yes,yes,yes,yes,yes,yes,yes,low,partial duration before final status
+retry_count,cicd,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,medium,observed retries only
+job_count,cicd,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,declared pipeline count
+cpu_utilization,infrastructure,synthetic|Alibaba_documented,yes,yes,yes,yes,yes,yes,yes,low,raw metric at cutoff
+memory_utilization,infrastructure,synthetic|Alibaba_documented,yes,yes,yes,yes,yes,yes,yes,low,raw metric at cutoff
+disk_utilization,infrastructure,synthetic|Alibaba_documented,yes,yes,yes,yes,yes,yes,yes,low,raw metric at cutoff
+load_average,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw metric at cutoff
+open_connections,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw metric at cutoff
+pending_tasks,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,yes,low,raw workload state
+running_tasks,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,yes,low,raw workload state
+failed_tasks,workload,synthetic|cluster_documented,no,yes,yes,yes,no,yes,yes,high,during-event count
+terminated_tasks,workload,synthetic|cluster_documented,no,yes,yes,yes,no,yes,yes,high,during-event count
+resource_requests_cpu,workload,synthetic|Google_documented,yes,yes,yes,yes,yes,yes,yes,low,raw request
+resource_usage_cpu,workload,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw usage
+scheduling_delay_seconds,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,low,raw delay
+restart_count,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,medium,lookback count
+eviction_count,workload,synthetic|cluster_documented,no,yes,yes,yes,no,yes,yes,high,during-event count
+src_ip_group,network,synthetic|UNSW|CIC_documented,yes,yes,yes,group_only,group_only,yes,yes,high,anonymized grouping token
+dst_ip_group,network,synthetic|UNSW|CIC_documented,yes,yes,yes,group_only,group_only,yes,yes,high,anonymized grouping token
+src_port,network,synthetic|UNSW|CIC_documented,yes,yes,yes,yes,yes,yes,yes,low,raw flow field
+dst_port,network,synthetic|UNSW|CIC_documented,yes,yes,yes,yes,yes,yes,yes,low,raw flow field
+protocol,network,synthetic|UNSW|CIC_documented,yes,yes,yes,yes,yes,yes,yes,low,raw categorical field
+service,network,synthetic|UNSW,yes,yes,yes,yes,yes,yes,yes,low,raw categorical field
+connection_count,network,synthetic|UNSW,yes,yes,yes,yes,yes,yes,yes,low,window aggregation
+flow_duration_seconds,network,synthetic|UNSW|CIC_documented,no,yes,yes,yes,yes,yes,yes,low,flow observation
+packet_rate,network,synthetic|CIC_documented,yes,yes,yes,yes,yes,yes,yes,medium,packets divided by window
+byte_rate,network,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,bytes divided by window
+auth_attempts,security,synthetic|CIC_documented,yes,yes,yes,yes,yes,yes,yes,low,window aggregation
+failed_auth_attempts,security,synthetic|CIC_documented,yes,yes,yes,yes,yes,yes,yes,medium,window aggregation
+credential_failure_rate,security,synthetic,yes,yes,yes,yes,yes,yes,medium,failed divided by attempts
+unique_destination_ports,security,synthetic|UNSW_proxy,yes,yes,yes,yes,yes,yes,yes,low,window cardinality
+unique_destination_hosts,security,synthetic|UNSW_proxy,yes,yes,yes,yes,yes,yes,yes,low,window cardinality
+connection_attempt_rate,security,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,window aggregation
+port_entropy,security,synthetic,yes,yes,yes,yes,yes,yes,yes,low,entropy over port counts
+host_entropy,security,synthetic,yes,yes,yes,yes,yes,yes,yes,low,entropy over host counts
+scan_burst_score,security,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,noisy declared lookback score
+request_rate,security,synthetic|CIC_documented,yes,yes,yes,yes,yes,yes,yes,medium,window aggregation
+source_count,security,synthetic|CIC_documented,yes,yes,yes,yes,yes,yes,yes,medium,window cardinality
+source_entropy,security,synthetic,yes,yes,yes,yes,yes,yes,yes,low,entropy over source counts
+traffic_volume_bytes,security,synthetic|CIC_documented,yes,yes,yes,yes,yes,yes,yes,low,window aggregation
+event_timestamp,temporal,synthetic|external,yes,yes,yes,yes,yes,yes,yes,medium,source event time
+window_start,temporal,synthetic|external,yes,yes,yes,yes,yes,yes,yes,low,window boundary
+window_end,temporal,synthetic|external,yes,yes,yes,yes,yes,yes,yes,low,window boundary at cutoff
+prediction_timestamp,temporal,synthetic,yes,yes,yes,yes,yes,yes,yes,high,feature cutoff
+observation_age_seconds,temporal,synthetic,yes,yes,yes,yes,yes,yes,yes,low,cutoff minus event time
+hour_of_day,temporal,synthetic|external,yes,yes,yes,yes,yes,yes,yes,low,calendar derivation
+day_of_week,temporal,synthetic|external,yes,yes,yes,yes,yes,yes,yes,low,calendar derivation
+cpu_delta,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,current minus lookback CPU
+memory_slope,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,lookback regression
+request_rate_rolling_mean,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,rolling statistic ending at cutoff
+request_rate_rolling_std,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,rolling statistic ending at cutoff
+failure_rate,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,high,observed pre-cutoff failures
+retry_rate,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,pre-cutoff retries divided by attempts
+burst_score,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,pre-cutoff burst statistic
+anomaly_score,derived,synthetic,yes,yes,yes,yes,yes,yes,yes,high,online score without labels
+incident_label,labels,synthetic|UNSW label,no,yes,yes,no,no,no,no,high,target only
+incident_type,labels,synthetic|UNSW category mapping,no,yes,yes,no,no,no,no,high,target only
+future_incident_label,labels,synthetic,no,no,yes,no,no,no,no,high,future target
+future_incident_time,labels,synthetic,no,no,yes,no,no,no,no,high,future target
+time_to_incident,labels,synthetic,no,no,yes,no,no,no,no,high,future target
+root_cause_category,rca_outputs,synthetic,no,yes,yes,no,no,no,no,high,RCA annotation target
+root_component,rca_outputs,synthetic,no,yes,yes,no,no,no,no,high,localization annotation target
+recommended_action,remediation_outputs,synthetic,no,yes,yes,no,no,no,no,high,recommendation target not success
+artifact_count,cicd,synthetic,yes,yes,yes,yes,yes,yes,yes,low,pre-cutoff artifact count
+bytes_in,network,synthetic|UNSW|CIC_documented,no,yes,yes,yes,yes,yes,yes,low,flow-level byte total
+bytes_out,network,synthetic|UNSW|CIC_documented,no,yes,yes,yes,yes,yes,yes,low,flow-level byte total
+cloud_job_count,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,low,raw workload count
+connection_rate,network,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,connections divided by declared window
+dependency_count,cicd,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,declared dependency count
+deployment_duration_seconds,deployment,synthetic|TravisTorrent,yes,yes,yes,yes,yes,yes,yes,low,elapsed duration at cutoff
+deployment_frequency,deployment,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,lookback deployment count
+deployment_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+environment_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+file_descriptor_usage,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw resource metric
+instance_count,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,low,raw instance count
+io_wait,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw resource metric
+job_id,identity_context,synthetic|documented,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+network_in_bytes,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw host metric
+network_out_bytes,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw host metric
+node_pressure,infrastructure,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,medium,derived pressure from resource metrics
+packets_in,network,synthetic|UNSW|CIC_documented,no,yes,yes,yes,yes,yes,yes,low,flow-level packet total
+packets_out,network,synthetic|UNSW|CIC_documented,no,yes,yes,yes,yes,yes,yes,low,flow-level packet total
+pipeline_id,identity_context,synthetic|documented,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+process_count,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw resource metric
+queue_length,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,low,raw workload metric
+region,identity_context,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,raw context
+resource_requests_memory,workload,synthetic|Google_documented,yes,yes,yes,yes,yes,yes,yes,low,raw request
+resource_usage_memory,workload,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw usage
+step_count,cicd,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,declared step count
+successful_auth_attempts,security,synthetic,yes,yes,yes,yes,yes,yes,yes,low,window aggregation
+task_count,workload,synthetic|cluster_documented,yes,yes,yes,yes,yes,yes,yes,low,raw task count
+test_duration_seconds,cicd,synthetic|TravisTorrent,yes,yes,yes,yes,yes,yes,yes,low,elapsed duration at cutoff
+thread_count,infrastructure,synthetic,yes,yes,yes,yes,yes,yes,yes,low,raw resource metric
+unique_source_count,security,synthetic,yes,yes,yes,yes,yes,yes,yes,medium,window cardinality
+version_age_seconds,deployment,synthetic,yes,yes,yes,yes,yes,yes,yes,low,cutoff-safe elapsed time
