@@ -1,0 +1,77 @@
+{
+  "test": {
+    "contract_version": "1.0.0",
+    "duplicate_counts": {
+      "exact": 0
+    },
+    "entity_count": 3000,
+    "generator_version": "1.0.0",
+    "incident_count": 1500,
+    "row_count": 50000,
+    "scenario_counts": {
+      "C1": 2022,
+      "C2": 1962,
+      "C3": 1546,
+      "C4": 987,
+      "C5": 1035,
+      "D1": 2985,
+      "D2": 3349,
+      "none": 36114
+    },
+    "seed": 20261008,
+    "time_range": {
+      "end": "2024-02-04T17:19:00+00:00",
+      "start": "2024-01-01T00:00:00+00:00"
+    }
+  },
+  "train": {
+    "contract_version": "1.0.0",
+    "duplicate_counts": {
+      "exact": 0
+    },
+    "entity_count": 3000,
+    "generator_version": "1.0.0",
+    "incident_count": 1500,
+    "row_count": 1000000,
+    "scenario_counts": {
+      "C1": 40282,
+      "C2": 40113,
+      "C3": 30054,
+      "C4": 20014,
+      "C5": 20251,
+      "D1": 59889,
+      "D2": 70076,
+      "none": 719321
+    },
+    "seed": 20261008,
+    "time_range": {
+      "end": "2021-11-25T10:39:00+00:00",
+      "start": "2020-01-01T00:00:00+00:00"
+    }
+  },
+  "validation": {
+    "contract_version": "1.0.0",
+    "duplicate_counts": {
+      "exact": 0
+    },
+    "entity_count": 3000,
+    "generator_version": "1.0.0",
+    "incident_count": 1500,
+    "row_count": 50000,
+    "scenario_counts": {
+      "C1": 1987,
+      "C2": 1983,
+      "C3": 1466,
+      "C4": 1059,
+      "C5": 936,
+      "D1": 3027,
+      "D2": 3481,
+      "none": 36061
+    },
+    "seed": 20261008,
+    "time_range": {
+      "end": "2022-02-04T17:19:00+00:00",
+      "start": "2022-01-01T00:00:00+00:00"
+    }
+  }
+}
