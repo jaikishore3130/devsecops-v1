@@ -1,0 +1,20 @@
+{
+  "dataset_name": "UNSW_NB15",
+  "dataset_dir": "/home/runner/work/devsecops-v1/devsecops-v1/data/external/cybersecurity/unsw_nb15",
+  "file_count": 1,
+  "total_size_bytes": 107,
+  "profiles": [
+    {
+      "name": "ACCESS_STATUS.txt",
+      "relative_path": "ACCESS_STATUS.txt",
+      "extension": ".txt",
+      "size_bytes": 107,
+      "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6",
+      "text_profile": {
+        "line_count": 1,
+        "char_count": 107,
+        "first_nonempty_line": "Dataset landing page unavailable from current environment (DNS resolution failure as of acquisition date)."
+      }
+    }
+  ]
+}

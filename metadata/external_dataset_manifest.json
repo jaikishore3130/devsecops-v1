@@ -1,0 +1,276 @@
+[
+  {
+    "dataset_id": "DSET_DEVOPS_TRAVISTORRENT",
+    "dataset_name": "TravisTorrent",
+    "official_source": "https://travistorrent.testroots.org/",
+    "repository_url": "https://github.com/TestRoots/travistorrent-tools",
+    "paper": "Beller et al., MSR 2017, doi:10.1109/MSR.2017.24",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "NOT VERIFIED",
+    "local_path": "data/external/devops/travistorrent",
+    "download_method": "Downloaded repository README evidence only; dataset portal DNS resolution failed in environment",
+    "intended_validation_use": [
+      "D1_CI_CD_FAILURE_detection",
+      "limited_prediction_proxy"
+    ],
+    "limitations": [
+      "Primary dataset files not directly acquired in this phase",
+      "Label and schema verification limited to publicly available documentation artifacts"
+    ],
+    "file_names": [
+      "travistorrent_tools_README.md"
+    ],
+    "files": [
+      {
+        "name": "travistorrent_tools_README.md",
+        "relative_path": "data/external/devops/travistorrent/travistorrent_tools_README.md",
+        "size_bytes": 4321,
+        "sha256": "b19a0f3193afd01c2a2b7d0ffb593586a5ff676557b5a7d10de054736a3d5079"
+      }
+    ],
+    "size_bytes": 4321,
+    "record_count": "NOT VERIFIED"
+  },
+  {
+    "dataset_id": "DSET_DEVOPS_ALIBABA_CLUSTERDATA",
+    "dataset_name": "Alibaba Cluster Trace (v2018 focus)",
+    "official_source": "https://github.com/alibaba/clusterdata",
+    "repository_url": "https://github.com/alibaba/clusterdata",
+    "paper": "See repository references; specific citation depends on sub-trace release (NOT VERIFIED in this phase)",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "cluster-trace-v2018 documentation snapshot",
+    "local_path": "data/external/devops/alibaba_clusterdata",
+    "download_method": "Downloaded official schema/README/fetch script via raw GitHub URLs",
+    "intended_validation_use": [
+      "D2_service_reliability_detection",
+      "D2_prediction_proxy",
+      "RCA_level2_partial"
+    ],
+    "limitations": [
+      "No raw trace tarballs downloaded to repository",
+      "No direct remediation labels"
+    ],
+    "file_names": [
+      "README.md",
+      "fetchData.sh",
+      "schema_v2018.txt",
+      "trace_2018.md"
+    ],
+    "files": [
+      {
+        "name": "README.md",
+        "relative_path": "data/external/devops/alibaba_clusterdata/README.md",
+        "size_bytes": 13728,
+        "sha256": "4a4843de730fc2bfb725fb37c6bbe46257c54087161ea7b9329a2663c97a6a90"
+      },
+      {
+        "name": "fetchData.sh",
+        "relative_path": "data/external/devops/alibaba_clusterdata/fetchData.sh",
+        "size_bytes": 582,
+        "sha256": "99ad99ce1379cc12d5e0842500df2c5e76dd41c03a774b1d54e84361b7212dcf"
+      },
+      {
+        "name": "schema_v2018.txt",
+        "relative_path": "data/external/devops/alibaba_clusterdata/schema_v2018.txt",
+        "size_bytes": 8125,
+        "sha256": "731763f9570c555cce6e27bab66fc6cf2aa19ea98ee9607063845bd37bb5af2e"
+      },
+      {
+        "name": "trace_2018.md",
+        "relative_path": "data/external/devops/alibaba_clusterdata/trace_2018.md",
+        "size_bytes": 6527,
+        "sha256": "daea8423c65cd24995500fcb6da103b1d4dec505f7b13ff2f6975caae0ede2fc"
+      }
+    ],
+    "size_bytes": 28962,
+    "record_count": "NOT VERIFIED"
+  },
+  {
+    "dataset_id": "DSET_DEVOPS_GOOGLE_CLUSTER_DATA",
+    "dataset_name": "Google Cluster Data",
+    "official_source": "https://github.com/google/cluster-data",
+    "repository_url": "https://github.com/google/cluster-data",
+    "paper": "Google cluster-usage traces documents (see repository bibliography)",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "trace format v3 documentation snapshot",
+    "local_path": "data/external/devops/google_cluster_data",
+    "download_method": "Downloaded official README/proto/bibliography via raw GitHub URLs",
+    "intended_validation_use": [
+      "D2_service_reliability_detection",
+      "D2_prediction_proxy",
+      "RCA_level1_to_level2_partial"
+    ],
+    "limitations": [
+      "No full trace shards downloaded in this phase",
+      "No direct remediation labels"
+    ],
+    "file_names": [
+      "ClusterData2019.md",
+      "README.md",
+      "bibliography.bib",
+      "clusterdata_trace_format_v3.proto"
+    ],
+    "files": [
+      {
+        "name": "ClusterData2019.md",
+        "relative_path": "data/external/devops/google_cluster_data/ClusterData2019.md",
+        "size_bytes": 2323,
+        "sha256": "6209413ba5dc94e45b9dda811871b7eab406980aab5279466fa9eb48578ff6e3"
+      },
+      {
+        "name": "README.md",
+        "relative_path": "data/external/devops/google_cluster_data/README.md",
+        "size_bytes": 2929,
+        "sha256": "1ef3b7398afe40b859d8a868f2574c524f163932d08c33463e1d440aaf2461be"
+      },
+      {
+        "name": "bibliography.bib",
+        "relative_path": "data/external/devops/google_cluster_data/bibliography.bib",
+        "size_bytes": 121647,
+        "sha256": "7afd8f20dd03b3b5dd71bdcb769f6ddcb359114b8377e4d0120206be2ccb8e45"
+      },
+      {
+        "name": "clusterdata_trace_format_v3.proto",
+        "relative_path": "data/external/devops/google_cluster_data/clusterdata_trace_format_v3.proto",
+        "size_bytes": 13720,
+        "sha256": "8082651c5430acaef31846287a3e1262e734f9fa6a5067fa431864aef840abde"
+      }
+    ],
+    "size_bytes": 140619,
+    "record_count": "NOT VERIFIED"
+  },
+  {
+    "dataset_id": "DSET_CYBER_CIC_IDS2017",
+    "dataset_name": "CIC-IDS2017",
+    "official_source": "https://www.unb.ca/cic/datasets/ids-2017.html",
+    "repository_url": "NOT VERIFIED",
+    "paper": "Sharafaldin et al. 2018 (CSE-CIC-IDS2018/CICFlowMeter line) - exact citation to verify in next phase",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "NOT VERIFIED",
+    "local_path": "data/external/cybersecurity/cic_ids2017",
+    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
+    "intended_validation_use": [
+      "C1_detection",
+      "C2_detection_partial",
+      "C3_detection",
+      "C4_detection",
+      "limited_prediction_proxy"
+    ],
+    "limitations": [
+      "Raw data unavailable locally in this phase"
+    ],
+    "file_names": [
+      "ACCESS_STATUS.txt"
+    ],
+    "files": [
+      {
+        "name": "ACCESS_STATUS.txt",
+        "relative_path": "data/external/cybersecurity/cic_ids2017/ACCESS_STATUS.txt",
+        "size_bytes": 107,
+        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
+      }
+    ],
+    "size_bytes": 107,
+    "record_count": "NOT VERIFIED"
+  },
+  {
+    "dataset_id": "DSET_CYBER_CIC_DDOS2019",
+    "dataset_name": "CIC-DDoS2019",
+    "official_source": "https://www.unb.ca/cic/datasets/ddos-2019.html",
+    "repository_url": "NOT VERIFIED",
+    "paper": "NOT VERIFIED",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "NOT VERIFIED",
+    "local_path": "data/external/cybersecurity/cic_ddos2019",
+    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
+    "intended_validation_use": [
+      "C2_detection"
+    ],
+    "limitations": [
+      "Raw data unavailable locally in this phase"
+    ],
+    "file_names": [
+      "ACCESS_STATUS.txt"
+    ],
+    "files": [
+      {
+        "name": "ACCESS_STATUS.txt",
+        "relative_path": "data/external/cybersecurity/cic_ddos2019/ACCESS_STATUS.txt",
+        "size_bytes": 107,
+        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
+      }
+    ],
+    "size_bytes": 107,
+    "record_count": "NOT VERIFIED"
+  },
+  {
+    "dataset_id": "DSET_CYBER_UNSW_NB15",
+    "dataset_name": "UNSW-NB15",
+    "official_source": "https://research.unsw.edu.au/projects/unsw-nb15-dataset",
+    "repository_url": "NOT VERIFIED",
+    "paper": "Moustafa & Slay (2015), UNSW-NB15",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "NOT VERIFIED",
+    "local_path": "data/external/cybersecurity/unsw_nb15",
+    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
+    "intended_validation_use": [
+      "C3_detection_partial",
+      "C5_detection",
+      "limited_prediction_proxy"
+    ],
+    "limitations": [
+      "Raw data unavailable locally in this phase"
+    ],
+    "file_names": [
+      "ACCESS_STATUS.txt"
+    ],
+    "files": [
+      {
+        "name": "ACCESS_STATUS.txt",
+        "relative_path": "data/external/cybersecurity/unsw_nb15/ACCESS_STATUS.txt",
+        "size_bytes": 107,
+        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
+      }
+    ],
+    "size_bytes": 107,
+    "record_count": "NOT VERIFIED"
+  },
+  {
+    "dataset_id": "DSET_CYBER_ADFA_LD",
+    "dataset_name": "ADFA-LD",
+    "official_source": "https://research.unsw.edu.au/projects/adfa-ids-datasets",
+    "repository_url": "NOT VERIFIED",
+    "paper": "Creech & Hu (2013) behavior-based intrusion detection on system calls (ADFA-LD context)",
+    "license": "NOT VERIFIED",
+    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
+    "version": "NOT VERIFIED",
+    "local_path": "data/external/cybersecurity/adfa_ld",
+    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
+    "intended_validation_use": [
+      "C5_detection",
+      "sequence_based_anomaly_assessment"
+    ],
+    "limitations": [
+      "Raw data unavailable locally in this phase"
+    ],
+    "file_names": [
+      "ACCESS_STATUS.txt"
+    ],
+    "files": [
+      {
+        "name": "ACCESS_STATUS.txt",
+        "relative_path": "data/external/cybersecurity/adfa_ld/ACCESS_STATUS.txt",
+        "size_bytes": 107,
+        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
+      }
+    ],
+    "size_bytes": 107,
+    "record_count": "NOT VERIFIED"
+  }
+]

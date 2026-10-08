@@ -1,0 +1,32 @@
+canonical_feature,dataset,original_feature,feature_type,unit,availability_stage,failure_domain,supports_detection,supports_prediction,supports_rca,supports_remediation,transformation_required,leakage_risk,notes
+build_status,TravisTorrent,TR_status,categorical,label,A,d1_ci_cd_failure,YES,PARTIAL,PARTIAL,NO,Label remap to CI_CD_FAILURE,LOW,Outcome label for detection task
+build_duration,TravisTorrent,tr_duration,numeric,seconds,A,d1_ci_cd_failure,YES,YES,PARTIAL,NO,Normalize by project baseline,LOW,Useful for pre-failure risk trend if observed before final status
+gh_num_commits,TravisTorrent,gh_num_commits_in_push,numeric,count,A,d1_ci_cd_failure,YES,YES,PARTIAL,NO,Log scaling,LOW,Can indicate risky integration bursts
+gh_src_churn,TravisTorrent,gh_src_churn,numeric,lines,A,d1_ci_cd_failure,YES,YES,PARTIAL,NO,Log scaling and outlier clipping,LOW,Potential predictor of build instability
+build_finished_at,TravisTorrent,tr_finished_at,timestamp,datetime,C,d1_ci_cd_failure,PARTIAL,NO,NO,NO,Convert timezone and ordering,HIGH,Post-event for prediction if queried after completion
+machine_cpu_util,Alibaba_v2018,cpu_util_percent,numeric,percent,A,d2_k8s_service_failure,YES,YES,PARTIAL,NO,Scale to 0-1,LOW,Infrastructure signal for degradation
+machine_mem_util,Alibaba_v2018,mem_util_percent,numeric,percent,A,d2_k8s_service_failure,YES,YES,PARTIAL,NO,Scale to 0-1,LOW,Correlates with resource pressure
+machine_disk_io,Alibaba_v2018,disk_io_percent,numeric,percent,A,d2_k8s_service_failure,YES,YES,PARTIAL,NO,Handle sentinel values -1 and 101,MEDIUM,Contains abnormal sentinel values
+container_status,Alibaba_v2018,status,categorical,state,B,d2_k8s_service_failure,YES,PARTIAL,PARTIAL,NO,Map to running/failed/restarted taxonomy,MEDIUM,Can be during-event indicator
+failure_domain_level1,Alibaba_v2018,failure_domain_1,categorical,id,A,d2_k8s_service_failure,PARTIAL,PARTIAL,YES,NO,Encode as categorical integer,LOW,Supports localization across failure domains
+instance_event_type,Google_cluster_data,InstanceEvent.type,categorical,event_type,B,d2_k8s_service_failure,YES,PARTIAL,YES,NO,Map FAIL/EVICT/LOST to failure taxonomy,LOW,Event-level labels for failure semantics
+instance_timestamp_us,Google_cluster_data,InstanceEvent.time,timestamp,microseconds,A,d2_k8s_service_failure,YES,YES,PARTIAL,NO,Convert to monotonic windows,LOW,Required for temporal ordering
+resource_request_cpu,Google_cluster_data,InstanceEvent.resource_request.cpus,numeric,normalized_cpu,A,d2_k8s_service_failure,YES,YES,PARTIAL,NO,Normalize across traces,LOW,Capacity-pressure predictor
+priority_class,Google_cluster_data,InstanceEvent.priority,numeric,ordinal,A,d2_k8s_service_failure,PARTIAL,PARTIAL,PARTIAL,NO,Optionally bin into classes,LOW,May correlate with preemption-induced failures
+flow_duration,CIC_IDS2017,Flow Duration,numeric,microseconds,A,cyber_c1_c4,YES,PARTIAL,PARTIAL,NO,Scale and clip long tails,LOW,Core flow timing signal
+tot_fwd_pkts,CIC_IDS2017,Total Fwd Packets,numeric,count,A,cyber_c1_c4,YES,PARTIAL,PARTIAL,NO,Log scaling,LOW,Traffic intensity indicator
+dst_port,CIC_IDS2017,Destination Port,categorical,port,A,cyber_c1_c4,YES,PARTIAL,PARTIAL,NO,Bucket well-known vs ephemeral ports,LOW,Important for scan/DDOS patterns
+flow_bytes_s,CIC_IDS2017,Flow Bytes/s,numeric,bytes_per_second,B,cyber_c1_c4,YES,PARTIAL,PARTIAL,NO,Stabilize infinities and NaNs,MEDIUM,May spike strongly during attack onset
+attack_label,CIC_IDS2017,Label,categorical,label,B,cyber_c1_c4,YES,NO,PARTIAL,NO,Map to BRUTE_FORCE/DDOS/PORT_SCAN/WEB_ATTACK,HIGH,Label-derived; exclude from predictors
+flow_start_time,CIC_IDS2017,Timestamp,timestamp,datetime,A,cyber_c1_c4,YES,YES,PARTIAL,NO,Timezone normalization and sorting,LOW,Needed for sequence windows
+ddos_attack_type,CIC_DDoS2019,Label,categorical,label,B,c2_ddos,YES,NO,PARTIAL,NO,Map attack families to DDOS classes,HIGH,Use as target only
+pkt_rate,CIC_DDoS2019,Flow Packets/s,numeric,packets_per_second,B,c2_ddos,YES,PARTIAL,PARTIAL,NO,Cap outliers and log scale,MEDIUM,During-event flooding indicator
+src_ip,CIC_DDoS2019,Source IP,categorical,ip,A,c2_ddos,PARTIAL,PARTIAL,PARTIAL,NO,Hash or anonymize if needed,MEDIUM,Potential leakage if source reused across splits
+proto,CIC_DDoS2019,Protocol,categorical,enum,A,c2_ddos,YES,PARTIAL,PARTIAL,NO,One-hot or embedding,LOW,Basic network context
+unsw_proto,UNSW_NB15,proto,categorical,enum,A,c3_c5,YES,PARTIAL,PARTIAL,NO,Canonical protocol mapping,LOW,Comparable to CIC protocol fields
+unsw_state,UNSW_NB15,state,categorical,enum,B,c3_c5,YES,PARTIAL,PARTIAL,NO,State harmonization,LOW,Connection state context
+unsw_attack_cat,UNSW_NB15,attack_cat,categorical,label,B,c3_c5,YES,NO,PARTIAL,NO,Map Reconnaissance->PORT_SCAN and others->C5,HIGH,Use as target not feature
+unsw_ct_dst_sport_ltm,UNSW_NB15,ct_dst_sport_ltm,numeric,count,A,c3_c5,YES,YES,PARTIAL,NO,Scale and potentially window aggregate,LOW,Can indicate scan behavior
+adfa_sequence,ADFA_LD,system_call_sequence,sequence,event_id,B,c5_malicious_process_network_behavior,YES,PARTIAL,PARTIAL,NO,Tokenization and sequence padding,LOW,Primary host anomaly signal
+adfa_label,ADFA_LD,class_label,categorical,label,B,c5_malicious_process_network_behavior,YES,NO,PARTIAL,NO,Binary/multi-class map,HIGH,Target only
+adfa_session_id,ADFA_LD,trace_file_name,categorical,identifier,A,c5_malicious_process_network_behavior,PARTIAL,PARTIAL,PARTIAL,NO,Session extraction from filenames,MEDIUM,Useful split key for leakage control

@@ -1,0 +1,33 @@
+{
+  "phase": "PHASE_02_DATASET_ACQUISITION_AUDIT",
+  "timestamp_utc": "2026-10-08T14:23:00Z",
+  "environment": {
+    "os": "Linux",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python_version": "3.12.3",
+    "primary_workspace": "/home/runner/work/devsecops-v1/devsecops-v1"
+  },
+  "tools_used": [
+    "python",
+    "curl",
+    "git",
+    "github-mcp get_file_contents"
+  ],
+  "dataset_download_date_utc": "2026-10-08",
+  "dataset_versions": {
+    "travistorrent": "NOT VERIFIED",
+    "alibaba_clusterdata": "cluster-trace-v2018 documentation snapshot",
+    "google_cluster_data": "trace format v3 documentation snapshot",
+    "cic_ids2017": "NOT VERIFIED",
+    "cic_ddos2019": "NOT VERIFIED",
+    "unsw_nb15": "NOT VERIFIED",
+    "adfa_ld": "NOT VERIFIED"
+  },
+  "commands_executed_summary": [
+    "python src/data_audit/run_phase2_audits.py",
+    "curl -fsSL <raw-github-url> -o data/external/...",
+    "python src/data_audit/audit_dataset.py --dataset-name ..."
+  ],
+  "checksums_recorded_in": "metadata/external_dataset_manifest.json",
+  "notes": "Several institutional dataset hosts were DNS-unreachable in this sandbox during Phase 2; fields dependent on those hosts are marked NOT VERIFIED."
+}

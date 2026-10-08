@@ -1,0 +1,56 @@
+{
+  "dataset_name": "GOOGLE_CLUSTER_DATA",
+  "dataset_dir": "/home/runner/work/devsecops-v1/devsecops-v1/data/external/devops/google_cluster_data",
+  "file_count": 4,
+  "total_size_bytes": 140619,
+  "profiles": [
+    {
+      "name": "clusterdata_trace_format_v3.proto",
+      "relative_path": "clusterdata_trace_format_v3.proto",
+      "extension": ".proto",
+      "size_bytes": 13720,
+      "sha256": "8082651c5430acaef31846287a3e1262e734f9fa6a5067fa431864aef840abde",
+      "text_profile": {
+        "line_count": 333,
+        "char_count": 13720,
+        "first_nonempty_line": "// This file defines the format of the 3rd version of cluster trace data"
+      }
+    },
+    {
+      "name": "ClusterData2019.md",
+      "relative_path": "ClusterData2019.md",
+      "extension": ".md",
+      "size_bytes": 2323,
+      "sha256": "6209413ba5dc94e45b9dda811871b7eab406980aab5279466fa9eb48578ff6e3",
+      "text_profile": {
+        "line_count": 34,
+        "char_count": 2323,
+        "first_nonempty_line": "# ClusterData 2019 traces"
+      }
+    },
+    {
+      "name": "bibliography.bib",
+      "relative_path": "bibliography.bib",
+      "extension": ".bib",
+      "size_bytes": 121647,
+      "sha256": "7afd8f20dd03b3b5dd71bdcb769f6ddcb359114b8377e4d0120206be2ccb8e45",
+      "text_profile": {
+        "line_count": 2181,
+        "char_count": 121581,
+        "first_nonempty_line": "################################################################"
+      }
+    },
+    {
+      "name": "README.md",
+      "relative_path": "README.md",
+      "extension": ".md",
+      "size_bytes": 2929,
+      "sha256": "1ef3b7398afe40b859d8a868f2574c524f163932d08c33463e1d440aaf2461be",
+      "text_profile": {
+        "line_count": 62,
+        "char_count": 2929,
+        "first_nonempty_line": "# Overview"
+      }
+    }
+  ]
+}
