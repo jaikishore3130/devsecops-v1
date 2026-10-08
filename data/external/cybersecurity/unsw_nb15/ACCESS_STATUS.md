@@ -1,5 +1,5 @@
 # Phase 3 Access Status
 
-**Status:** TOO_LARGE_FOR_CURRENT_ENVIRONMENT
+**Status:** PARTIALLY_ACQUIRED
 
-The official page reports 100 GB of raw packets and 2,540,044 CSV records. No full corpus was downloaded in Codespaces; a bounded official subset was not identified.
+One bounded UNSW-NB15 CSV partition was acquired from the recognized Zenodo record `10.5281/zenodo.10140548` under its declared CC-BY-4.0 metadata. The full corpus and raw packet capture were not downloaded. See `metadata/dataset_acquisition_manifest.json` and `reports/dataset_audit/UNSW_NB15_PHASE3B_PROFILE.json`.

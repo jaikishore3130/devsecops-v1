@@ -11,6 +11,7 @@ __pycache__/
 venv/
 
 # Large/temporary dataset artifacts (do not commit raw corpora)
+data/external/**/raw/*
 data/external/**/*.zip
 data/external/**/*.gz
 data/external/**/*.tar

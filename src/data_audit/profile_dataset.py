@@ -67,7 +67,7 @@ def row_hash(row: dict[str, str]) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def iter_rows(path: Path) -> Iterator[dict[str, str]]:
+def iter_rows(path: Path, columns: list[str] | None = None) -> Iterator[dict[str, str]]:
     suffix = path.suffix.lower()
     with open_text(path) as handle:
         if suffix in {".jsonl", ".ndjson"}:
@@ -78,6 +78,12 @@ def iter_rows(path: Path) -> Iterator[dict[str, str]]:
                         yield {str(key): "" if item is None else str(item) for key, item in value.items()}
             return
         delimiter = "\t" if suffix == ".tsv" else ","
+        if columns:
+            reader = csv.reader(handle, delimiter=delimiter)
+            for values in reader:
+                if values:
+                    yield {column: value for column, value in zip(columns, values)}
+            return
         reader = csv.DictReader(handle, delimiter=delimiter)
         for row in reader:
             yield {str(key): "" if value is None else value for key, value in row.items()}
@@ -88,6 +94,7 @@ def infer_columns(rows: Iterable[dict[str, str]]) -> tuple[list[dict[str, Any]],
     missing = Counter()
     unique_values: dict[str, set[str]] = defaultdict(set)
     numeric_values: dict[str, list[float]] = defaultdict(list)
+    numeric_stats: dict[str, dict[str, float]] = defaultdict(lambda: {"count": 0, "mean": 0.0, "m2": 0.0, "min": math.inf, "max": -math.inf})
     timestamp_values: dict[str, list[datetime]] = defaultdict(list)
     label_values: dict[str, Counter[str]] = defaultdict(Counter)
     group_values: dict[str, set[str]] = defaultdict(set)
@@ -110,8 +117,17 @@ def infer_columns(rows: Iterable[dict[str, str]]) -> tuple[list[dict[str, Any]],
                 continue
             if len(unique_values[column]) < 100_000:
                 unique_values[column].add(value)
-            if is_number(value) and len(numeric_values[column]) < 100_000:
-                numeric_values[column].append(float(value))
+            if is_number(value):
+                number = float(value)
+                stats = numeric_stats[column]
+                stats["count"] += 1
+                delta = number - stats["mean"]
+                stats["mean"] += delta / stats["count"]
+                stats["m2"] += delta * (number - stats["mean"])
+                stats["min"] = min(stats["min"], number)
+                stats["max"] = max(stats["max"], number)
+                if len(numeric_values[column]) < 100_000:
+                    numeric_values[column].append(number)
             if any(hint in column.lower() for hint in TIMESTAMP_HINTS):
                 parsed = parse_timestamp(value)
                 if parsed is not None:
@@ -125,6 +141,7 @@ def infer_columns(rows: Iterable[dict[str, str]]) -> tuple[list[dict[str, Any]],
     schema: list[dict[str, Any]] = []
     for column in columns:
         values = numeric_values.get(column, [])
+        stats = numeric_stats.get(column, {})
         timestamps = timestamp_values.get(column, [])
         schema.append({
             "column": column,
@@ -133,11 +150,12 @@ def infer_columns(rows: Iterable[dict[str, str]]) -> tuple[list[dict[str, Any]],
             "missing_percentage": round((missing[column] / total) * 100, 6) if total else 0,
             "unique_count_observed": len(unique_values[column]),
             "unique_count_capped": len(unique_values[column]) >= 100_000,
-            "min": min(values) if values else None,
-            "max": max(values) if values else None,
-            "mean": statistics.fmean(values) if values else None,
+            "numeric_count": int(stats.get("count", 0)),
+            "min": stats.get("min") if stats else None,
+            "max": stats.get("max") if stats else None,
+            "mean": stats.get("mean") if stats else None,
             "median_sample": statistics.median(values) if values else None,
-            "standard_deviation": statistics.stdev(values) if len(values) > 1 else None,
+            "standard_deviation": math.sqrt(stats["m2"] / (stats["count"] - 1)) if stats.get("count", 0) > 1 else None,
             "timestamp_min": min(timestamps).isoformat() if timestamps else None,
             "timestamp_max": max(timestamps).isoformat() if timestamps else None,
             "label_distribution": dict(label_values[column].most_common(50)),
@@ -159,8 +177,8 @@ def classify_leakage(column: str) -> str:
     return "CONDITIONALLY SAFE" if any(hint in name for hint in TIMESTAMP_HINTS) else "SAFE"
 
 
-def profile_file(path: Path) -> dict[str, Any]:
-    schema, summaries = infer_columns(iter_rows(path))
+def profile_file(path: Path, columns: list[str] | None = None) -> dict[str, Any]:
+    schema, summaries = infer_columns(iter_rows(path, columns))
     summary = summaries[0] if summaries else {"record_count": 0, "exact_duplicates": 0}
     return {
         "file": str(path),
@@ -181,19 +199,25 @@ def profile_file(path: Path) -> dict[str, Any]:
     }
 
 
-def profile_dataset(dataset_dir: Path) -> dict[str, Any]:
+def profile_dataset(dataset_dir: Path, columns: list[str] | None = None) -> dict[str, Any]:
     files = [path for path in dataset_dir.rglob("*") if path.is_file() and path.suffix.lower() in {".csv", ".tsv", ".jsonl", ".ndjson"}]
-    profiles = [profile_file(path) for path in files]
+    profiles = [profile_file(path, columns) for path in files]
     return {"dataset_dir": str(dataset_dir), "file_count": len(files), "files": profiles}
+
+
+def read_columns(path: Path) -> list[str]:
+    return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip() and not line.startswith("#")]
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Chunked record-level dataset profiler")
     parser.add_argument("--dataset-dir", required=True, type=Path)
     parser.add_argument("--output-json", required=True, type=Path)
+    parser.add_argument("--columns-file", type=Path, help="Documented column names for headerless CSV/TSV files")
     args = parser.parse_args()
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
-    args.output_json.write_text(json.dumps(profile_dataset(args.dataset_dir,), indent=2), encoding="utf-8")
+    columns = read_columns(args.columns_file) if args.columns_file else None
+    args.output_json.write_text(json.dumps(profile_dataset(args.dataset_dir, columns), indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":
