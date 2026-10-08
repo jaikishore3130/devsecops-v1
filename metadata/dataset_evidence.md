@@ -1,27 +1,19 @@
 # Dataset Evidence Register (Phase 2)
 
-## Evidence Hierarchy Used
-1. Original dataset repository / official landing page
-2. Official institutional repository
-3. Original paper / official bibliography
-4. Official archives
-5. Recognized academic mirrors
+The register is conservative: a local README, schema, protocol buffer, fetch script, or access marker is an artifact, not a dataset acquisition. Because no raw records are present, every dataset is status **C - officially identified and evidence-supported, but not acquired**. No status A or B claim is made.
 
-If a field could not be verified from accessible evidence in this environment, it is marked **NOT VERIFIED**.
+| Dataset | ID | Official source | Local evidence | Status | Raw data | Telemetry | Labels/timestamps/sequences | Intended class | Main limitation |
+|---|---|---|---|---|---|---|---|---|---|
+| TravisTorrent | DSET_DEVOPS_TRAVISTORRENT | [official portal](https://travistorrent.testroots.org/) | Tool README | C | No | CI/build metadata | Outcome labels documented; timestamps and project histories expected | D1 | Failed build is not RCA or remediation ground truth |
+| Alibaba Cluster Trace | DSET_DEVOPS_ALIBABA_CLUSTERDATA | [official repository](https://github.com/alibaba/clusterdata) | README, schema, trace docs, fetch script | C | No | Cluster/workload/resource telemetry | Timestamped trace design; no unified failure label | Revised D2 | Not Kubernetes-specific; proxy labels required |
+| Google Cluster Data | DSET_DEVOPS_GOOGLE_CLUSTER_DATA | [official repository](https://github.com/google/cluster-data) | README, 2019 docs, proto, bibliography | C | No | Scheduler/task/machine/event telemetry | Timestamped event schema; no unified failure label | Revised D2 | Proxy labels required; no remediation outcomes |
+| CIC-IDS2017 | DSET_CYBER_CIC_IDS2017 | [official landing page](https://www.unb.ca/cic/datasets/ids-2017.html) | Access status marker | C | No | Network flows | Attack categories and timestamps documented; local distribution unavailable | C1, C2, C3, C4 | Lab traffic and category-only labels |
+| CIC-DDoS2019 | DSET_CYBER_CIC_DDOS2019 | [official landing page](https://www.unb.ca/cic/datasets/ddos-2019.html) | Access status marker | C | No | DDoS network flows | Attack families and timestamps documented | C2 | Category-only labels and lab realism |
+| UNSW-NB15 | DSET_CYBER_UNSW_NB15 | [official landing page](https://research.unsw.edu.au/projects/unsw-nb15-dataset) | Access status marker | C | No | Network flows/features | Attack categories documented; sequence context limited | C3, C5 | Testbed and older-traffic domain shift |
+| ADFA-LD | DSET_CYBER_ADFA_LD | [official landing page](https://research.unsw.edu.au/projects/adfa-ids-datasets) | Access status marker | C | No | Linux system-call sequences | Normal/attack scenarios; sequence order | C5 | Host-centric, not network-scale or remediation evidence |
 
-## Dataset Evidence
+Detailed file hashes and local profiles are in `metadata/external_dataset_manifest.json` and `reports/dataset_audit/*_AUDIT.json`.
 
-| Dataset | Official Source | Repository / Archive | Paper | Authors | Year | License | Access Status in This Environment | Exact Validation Purpose | What It Cannot Validate |
-|---|---|---|---|---|---:|---|---|---|---|
-| TravisTorrent | https://travistorrent.testroots.org/ | https://github.com/TestRoots/travistorrent-tools | Beller et al. (MSR 2017) DOI:10.1109/MSR.2017.24 | Beller et al. | 2017 | NOT VERIFIED | Official portal unreachable (DNS); repository docs accessible | D1 detection, limited CI prediction proxy | Remediation outcomes, explicit RCA labels |
-| Alibaba Cluster Trace (v2018 focus) | https://github.com/alibaba/clusterdata | https://github.com/alibaba/clusterdata | Repo-linked docs/bibliography (specific canonical citation NOT VERIFIED in this phase) | Alibaba authors (repo maintainers) | NOT VERIFIED | NOT VERIFIED | Accessible; schema docs and fetch script acquired | D2 detection, prediction proxy, RCA localization proxy | Direct remediation labels, explicit root-cause labels |
-| Google Cluster Data | https://github.com/google/cluster-data | https://github.com/google/cluster-data | Repo bibliography (`bibliography.bib`) | Google researchers (see bibliography) | NOT VERIFIED | NOT VERIFIED | Accessible; proto schema and docs acquired | D2 detection, prediction proxy, event-type RCA proxy | Remediation labels, definitive causal RCA |
-| CIC-IDS2017 | https://www.unb.ca/cic/datasets/ids-2017.html | NOT VERIFIED | Sharafaldin et al. lineage citation (exact bib field to finalize in next phase) | NOT VERIFIED | NOT VERIFIED | NOT VERIFIED | Landing page unreachable (DNS) | C1/C2/C3/C4 detection (once acquired), limited prediction proxy | Remediation outcomes, strong RCA causality |
-| CIC-DDoS2019 | https://www.unb.ca/cic/datasets/ddos-2019.html | NOT VERIFIED | NOT VERIFIED | NOT VERIFIED | NOT VERIFIED | NOT VERIFIED | Landing page unreachable (DNS) | C2 detection focus (once acquired) | Remediation outcomes, high-fidelity RCA |
-| UNSW-NB15 | https://research.unsw.edu.au/projects/unsw-nb15-dataset | NOT VERIFIED | Moustafa & Slay (2015) | Moustafa, Slay | 2015 | NOT VERIFIED | Landing page unreachable (DNS) | C3/C5 detection and anomaly profiling (once acquired) | Direct remediation outcomes, explicit root causes |
-| ADFA-LD | https://research.unsw.edu.au/projects/adfa-ids-datasets | NOT VERIFIED | Creech & Hu (2013) ADFA-LD context | Creech, Hu | 2013 | NOT VERIFIED | Landing page unreachable (DNS) | C5 host-level anomaly detection (once acquired) | Network-scale DDOS/scan validation, remediation labels |
+## Evidence Interpretation
 
-## Phase-2 Decision Notes
-- We retained all seven Phase-1 failure classes.
-- We **downgraded confidence** for datasets that could not be directly accessed in this runtime due DNS restrictions.
-- For inaccessible datasets, schema and label claims remain provisional and are tagged **NOT VERIFIED** where applicable.
+Official source identity and published dataset descriptions support relevance. They do not establish local availability, row counts, class balance, exact schema, or empirical model performance. DNS failures affected several official landing pages during this run; those fields remain explicitly unverified rather than inferred from filenames.

@@ -3,274 +3,140 @@
     "dataset_id": "DSET_DEVOPS_TRAVISTORRENT",
     "dataset_name": "TravisTorrent",
     "official_source": "https://travistorrent.testroots.org/",
-    "repository_url": "https://github.com/TestRoots/travistorrent-tools",
-    "paper": "Beller et al., MSR 2017, doi:10.1109/MSR.2017.24",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "NOT VERIFIED",
-    "local_path": "data/external/devops/travistorrent",
-    "download_method": "Downloaded repository README evidence only; dataset portal DNS resolution failed in environment",
-    "intended_validation_use": [
-      "D1_CI_CD_FAILURE_detection",
-      "limited_prediction_proxy"
-    ],
-    "limitations": [
-      "Primary dataset files not directly acquired in this phase",
-      "Label and schema verification limited to publicly available documentation artifacts"
-    ],
-    "file_names": [
-      "travistorrent_tools_README.md"
-    ],
-    "files": [
-      {
-        "name": "travistorrent_tools_README.md",
-        "relative_path": "data/external/devops/travistorrent/travistorrent_tools_README.md",
-        "size_bytes": 4321,
-        "sha256": "b19a0f3193afd01c2a2b7d0ffb593586a5ff676557b5a7d10de054736a3d5079"
-      }
-    ],
-    "size_bytes": 4321,
+    "original_organization_authors": "TravisTorrent project; Beller et al.",
+    "paper_reference": "Beller et al., MSR 2017, DOI:10.1109/MSR.2017.24",
+    "status": "C",
+    "local_artifacts": ["data/external/devops/travistorrent/travistorrent_tools_README.md"],
+    "raw_data_available": false,
+    "telemetry_type": "CI/build metadata and project, commit, and pull-request attributes",
+    "labels": "Build outcome (passed/failed) documented; raw distribution not verified",
+    "timestamps": true,
+    "sequences": "Project/build histories expected; not inspected locally",
+    "intended_failure_class": "D1 CI/CD pipeline/build failure",
+    "validation_capability": {"detection": "YES", "prediction": "PARTIAL", "rca": "NO", "remediation": "NO"},
+    "rca_level": 1,
+    "limitations": ["A failed build is not an explicit root-cause label", "No remediation action/outcome ground truth", "Portal unreachable in this environment"],
+    "acquisition_limitations": "Only tool README evidence retained; no dataset rows downloaded.",
     "record_count": "NOT VERIFIED"
   },
   {
     "dataset_id": "DSET_DEVOPS_ALIBABA_CLUSTERDATA",
-    "dataset_name": "Alibaba Cluster Trace (v2018 focus)",
+    "dataset_name": "Alibaba Cluster Trace (2018 documentation focus)",
     "official_source": "https://github.com/alibaba/clusterdata",
-    "repository_url": "https://github.com/alibaba/clusterdata",
-    "paper": "See repository references; specific citation depends on sub-trace release (NOT VERIFIED in this phase)",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "cluster-trace-v2018 documentation snapshot",
-    "local_path": "data/external/devops/alibaba_clusterdata",
-    "download_method": "Downloaded official schema/README/fetch script via raw GitHub URLs",
-    "intended_validation_use": [
-      "D2_service_reliability_detection",
-      "D2_prediction_proxy",
-      "RCA_level2_partial"
-    ],
-    "limitations": [
-      "No raw trace tarballs downloaded to repository",
-      "No direct remediation labels"
-    ],
-    "file_names": [
-      "README.md",
-      "fetchData.sh",
-      "schema_v2018.txt",
-      "trace_2018.md"
-    ],
-    "files": [
-      {
-        "name": "README.md",
-        "relative_path": "data/external/devops/alibaba_clusterdata/README.md",
-        "size_bytes": 13728,
-        "sha256": "4a4843de730fc2bfb725fb37c6bbe46257c54087161ea7b9329a2663c97a6a90"
-      },
-      {
-        "name": "fetchData.sh",
-        "relative_path": "data/external/devops/alibaba_clusterdata/fetchData.sh",
-        "size_bytes": 582,
-        "sha256": "99ad99ce1379cc12d5e0842500df2c5e76dd41c03a774b1d54e84361b7212dcf"
-      },
-      {
-        "name": "schema_v2018.txt",
-        "relative_path": "data/external/devops/alibaba_clusterdata/schema_v2018.txt",
-        "size_bytes": 8125,
-        "sha256": "731763f9570c555cce6e27bab66fc6cf2aa19ea98ee9607063845bd37bb5af2e"
-      },
-      {
-        "name": "trace_2018.md",
-        "relative_path": "data/external/devops/alibaba_clusterdata/trace_2018.md",
-        "size_bytes": 6527,
-        "sha256": "daea8423c65cd24995500fcb6da103b1d4dec505f7b13ff2f6975caae0ede2fc"
-      }
-    ],
-    "size_bytes": 28962,
+    "original_organization_authors": "Alibaba",
+    "paper_reference": "Repository-linked trace documentation; release-specific citation remains to be selected",
+    "status": "C",
+    "local_artifacts": ["data/external/devops/alibaba_clusterdata/README.md", "data/external/devops/alibaba_clusterdata/schema_v2018.txt", "data/external/devops/alibaba_clusterdata/trace_2018.md", "data/external/devops/alibaba_clusterdata/fetchData.sh"],
+    "raw_data_available": false,
+    "telemetry_type": "Cluster scheduling, machine, instance, resource, and workload trace documentation",
+    "labels": "No unified failure label; reliability targets must be engineered",
+    "timestamps": true,
+    "sequences": true,
+    "intended_failure_class": "Cloud cluster/workload reliability failure (revised D2)",
+    "validation_capability": {"detection": "PARTIAL", "prediction": "PARTIAL", "rca": "PARTIAL", "remediation": "NO"},
+    "rca_level": 2,
+    "limitations": ["Not Kubernetes-specific", "Failure labels require proxy construction", "No remediation outcomes"],
+    "acquisition_limitations": "Schemas and documentation only; no raw trace files downloaded.",
     "record_count": "NOT VERIFIED"
   },
   {
     "dataset_id": "DSET_DEVOPS_GOOGLE_CLUSTER_DATA",
     "dataset_name": "Google Cluster Data",
     "official_source": "https://github.com/google/cluster-data",
-    "repository_url": "https://github.com/google/cluster-data",
-    "paper": "Google cluster-usage traces documents (see repository bibliography)",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "trace format v3 documentation snapshot",
-    "local_path": "data/external/devops/google_cluster_data",
-    "download_method": "Downloaded official README/proto/bibliography via raw GitHub URLs",
-    "intended_validation_use": [
-      "D2_service_reliability_detection",
-      "D2_prediction_proxy",
-      "RCA_level1_to_level2_partial"
-    ],
-    "limitations": [
-      "No full trace shards downloaded in this phase",
-      "No direct remediation labels"
-    ],
-    "file_names": [
-      "ClusterData2019.md",
-      "README.md",
-      "bibliography.bib",
-      "clusterdata_trace_format_v3.proto"
-    ],
-    "files": [
-      {
-        "name": "ClusterData2019.md",
-        "relative_path": "data/external/devops/google_cluster_data/ClusterData2019.md",
-        "size_bytes": 2323,
-        "sha256": "6209413ba5dc94e45b9dda811871b7eab406980aab5279466fa9eb48578ff6e3"
-      },
-      {
-        "name": "README.md",
-        "relative_path": "data/external/devops/google_cluster_data/README.md",
-        "size_bytes": 2929,
-        "sha256": "1ef3b7398afe40b859d8a868f2574c524f163932d08c33463e1d440aaf2461be"
-      },
-      {
-        "name": "bibliography.bib",
-        "relative_path": "data/external/devops/google_cluster_data/bibliography.bib",
-        "size_bytes": 121647,
-        "sha256": "7afd8f20dd03b3b5dd71bdcb769f6ddcb359114b8377e4d0120206be2ccb8e45"
-      },
-      {
-        "name": "clusterdata_trace_format_v3.proto",
-        "relative_path": "data/external/devops/google_cluster_data/clusterdata_trace_format_v3.proto",
-        "size_bytes": 13720,
-        "sha256": "8082651c5430acaef31846287a3e1262e734f9fa6a5067fa431864aef840abde"
-      }
-    ],
-    "size_bytes": 140619,
+    "original_organization_authors": "Google researchers; repository maintainers",
+    "paper_reference": "Repository bibliography and cluster trace documentation",
+    "status": "C",
+    "local_artifacts": ["data/external/devops/google_cluster_data/README.md", "data/external/devops/google_cluster_data/ClusterData2019.md", "data/external/devops/google_cluster_data/clusterdata_trace_format_v3.proto", "data/external/devops/google_cluster_data/bibliography.bib"],
+    "raw_data_available": false,
+    "telemetry_type": "Scheduler, task, machine, resource, and instance-event trace format",
+    "labels": "No unified reliability label; event and resource proxies require engineering",
+    "timestamps": true,
+    "sequences": true,
+    "intended_failure_class": "Cloud cluster/workload reliability failure (revised D2)",
+    "validation_capability": {"detection": "PARTIAL", "prediction": "PARTIAL", "rca": "PARTIAL", "remediation": "NO"},
+    "rca_level": 2,
+    "limitations": ["Not Kubernetes-specific", "Indirect failure labeling", "No remediation outcomes"],
+    "acquisition_limitations": "Protocol/schema and documentation only; no trace shards downloaded.",
     "record_count": "NOT VERIFIED"
   },
   {
     "dataset_id": "DSET_CYBER_CIC_IDS2017",
     "dataset_name": "CIC-IDS2017",
     "official_source": "https://www.unb.ca/cic/datasets/ids-2017.html",
-    "repository_url": "NOT VERIFIED",
-    "paper": "Sharafaldin et al. 2018 (CSE-CIC-IDS2018/CICFlowMeter line) - exact citation to verify in next phase",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "NOT VERIFIED",
-    "local_path": "data/external/cybersecurity/cic_ids2017",
-    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
-    "intended_validation_use": [
-      "C1_detection",
-      "C2_detection_partial",
-      "C3_detection",
-      "C4_detection",
-      "limited_prediction_proxy"
-    ],
-    "limitations": [
-      "Raw data unavailable locally in this phase"
-    ],
-    "file_names": [
-      "ACCESS_STATUS.txt"
-    ],
-    "files": [
-      {
-        "name": "ACCESS_STATUS.txt",
-        "relative_path": "data/external/cybersecurity/cic_ids2017/ACCESS_STATUS.txt",
-        "size_bytes": 107,
-        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
-      }
-    ],
-    "size_bytes": 107,
+    "original_organization_authors": "Canadian Institute for Cybersecurity, UNB; Sharafaldin et al.",
+    "paper_reference": "Sharafaldin et al., CICFlowMeter/CICIDS dataset lineage; exact release citation to verify",
+    "status": "C",
+    "local_artifacts": ["data/external/cybersecurity/cic_ids2017/ACCESS_STATUS.txt"],
+    "raw_data_available": false,
+    "telemetry_type": "Network flow records and attack scenario telemetry",
+    "labels": "Benign and attack-category labels documented; local distribution not verified",
+    "timestamps": true,
+    "sequences": true,
+    "intended_failure_class": "C1 brute-force/authentication, C2 DDoS/flooding, C3 port/service scanning, C4 web/application attack",
+    "validation_capability": {"detection": "YES", "prediction": "PARTIAL", "rca": "PARTIAL", "remediation": "NO"},
+    "rca_level": 1,
+    "limitations": ["Lab-generated traffic and dated patterns", "Category labels are not causal explanations", "No remediation outcomes"],
+    "acquisition_limitations": "Landing page DNS-unreachable; no flow files downloaded.",
     "record_count": "NOT VERIFIED"
   },
   {
     "dataset_id": "DSET_CYBER_CIC_DDOS2019",
     "dataset_name": "CIC-DDoS2019",
     "official_source": "https://www.unb.ca/cic/datasets/ddos-2019.html",
-    "repository_url": "NOT VERIFIED",
-    "paper": "NOT VERIFIED",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "NOT VERIFIED",
-    "local_path": "data/external/cybersecurity/cic_ddos2019",
-    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
-    "intended_validation_use": [
-      "C2_detection"
-    ],
-    "limitations": [
-      "Raw data unavailable locally in this phase"
-    ],
-    "file_names": [
-      "ACCESS_STATUS.txt"
-    ],
-    "files": [
-      {
-        "name": "ACCESS_STATUS.txt",
-        "relative_path": "data/external/cybersecurity/cic_ddos2019/ACCESS_STATUS.txt",
-        "size_bytes": 107,
-        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
-      }
-    ],
-    "size_bytes": 107,
+    "original_organization_authors": "Canadian Institute for Cybersecurity, UNB",
+    "paper_reference": "CIC-DDoS2019 official dataset documentation; exact paper citation to verify",
+    "status": "C",
+    "local_artifacts": ["data/external/cybersecurity/cic_ddos2019/ACCESS_STATUS.txt"],
+    "raw_data_available": false,
+    "telemetry_type": "DDoS-focused network flow telemetry",
+    "labels": "Benign and DDoS attack-family labels documented; local distribution not verified",
+    "timestamps": true,
+    "sequences": true,
+    "intended_failure_class": "C2 DDoS/flooding",
+    "validation_capability": {"detection": "YES", "prediction": "PARTIAL", "rca": "PARTIAL", "remediation": "NO"},
+    "rca_level": 1,
+    "limitations": ["Attack categories do not prove causal RCA", "Lab realism and domain-shift limitations", "No remediation outcomes"],
+    "acquisition_limitations": "Landing page DNS-unreachable; no flow files downloaded.",
     "record_count": "NOT VERIFIED"
   },
   {
     "dataset_id": "DSET_CYBER_UNSW_NB15",
     "dataset_name": "UNSW-NB15",
     "official_source": "https://research.unsw.edu.au/projects/unsw-nb15-dataset",
-    "repository_url": "NOT VERIFIED",
-    "paper": "Moustafa & Slay (2015), UNSW-NB15",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "NOT VERIFIED",
-    "local_path": "data/external/cybersecurity/unsw_nb15",
-    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
-    "intended_validation_use": [
-      "C3_detection_partial",
-      "C5_detection",
-      "limited_prediction_proxy"
-    ],
-    "limitations": [
-      "Raw data unavailable locally in this phase"
-    ],
-    "file_names": [
-      "ACCESS_STATUS.txt"
-    ],
-    "files": [
-      {
-        "name": "ACCESS_STATUS.txt",
-        "relative_path": "data/external/cybersecurity/unsw_nb15/ACCESS_STATUS.txt",
-        "size_bytes": 107,
-        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
-      }
-    ],
-    "size_bytes": 107,
+    "original_organization_authors": "UNSW Canberra Cyber; Moustafa and Slay",
+    "paper_reference": "Moustafa and Slay, 2015, UNSW-NB15",
+    "status": "C",
+    "local_artifacts": ["data/external/cybersecurity/unsw_nb15/ACCESS_STATUS.txt"],
+    "raw_data_available": false,
+    "telemetry_type": "Network flow and engineered network features",
+    "labels": "Normal/attack and attack-category labels documented; local files unavailable",
+    "timestamps": "Limited or derived timing context depends on release file",
+    "sequences": "Weak record-wise format; windows would need construction",
+    "intended_failure_class": "C3 port/service scanning and C5 malicious/anomalous host/network behavior",
+    "validation_capability": {"detection": "YES", "prediction": "PARTIAL", "rca": "PARTIAL", "remediation": "NO"},
+    "rca_level": 1,
+    "limitations": ["Testbed origin", "Older traffic characteristics", "Attack categories are not root causes", "No remediation outcomes"],
+    "acquisition_limitations": "Institutional landing page DNS-unreachable; no files downloaded.",
     "record_count": "NOT VERIFIED"
   },
   {
     "dataset_id": "DSET_CYBER_ADFA_LD",
     "dataset_name": "ADFA-LD",
     "official_source": "https://research.unsw.edu.au/projects/adfa-ids-datasets",
-    "repository_url": "NOT VERIFIED",
-    "paper": "Creech & Hu (2013) behavior-based intrusion detection on system calls (ADFA-LD context)",
-    "license": "NOT VERIFIED",
-    "acquisition_date": "2026-10-08T14:23:22.063702+00:00",
-    "version": "NOT VERIFIED",
-    "local_path": "data/external/cybersecurity/adfa_ld",
-    "download_method": "Official URL DNS resolution failed in environment; acquisition deferred",
-    "intended_validation_use": [
-      "C5_detection",
-      "sequence_based_anomaly_assessment"
-    ],
-    "limitations": [
-      "Raw data unavailable locally in this phase"
-    ],
-    "file_names": [
-      "ACCESS_STATUS.txt"
-    ],
-    "files": [
-      {
-        "name": "ACCESS_STATUS.txt",
-        "relative_path": "data/external/cybersecurity/adfa_ld/ACCESS_STATUS.txt",
-        "size_bytes": 107,
-        "sha256": "a5b876217b8e637248eb731747c4f4b4d738ccd1f7d8c09d188c3854796f9ae6"
-      }
-    ],
-    "size_bytes": 107,
+    "original_organization_authors": "UNSW Canberra; Creech and Hu",
+    "paper_reference": "Creech and Hu, 2013, behavior-based intrusion detection using system calls",
+    "status": "C",
+    "local_artifacts": ["data/external/cybersecurity/adfa_ld/ACCESS_STATUS.txt"],
+    "raw_data_available": false,
+    "telemetry_type": "Linux host system-call behavior sequences",
+    "labels": "Normal and attack scenario labels documented; local sequences unavailable",
+    "timestamps": "Sequence order yes; wall-clock timestamps may be limited",
+    "sequences": true,
+    "intended_failure_class": "C5 malicious/anomalous host/network behavior (host-level proxy)",
+    "validation_capability": {"detection": "YES", "prediction": "PARTIAL", "rca": "PARTIAL", "remediation": "NO"},
+    "rca_level": 1,
+    "limitations": ["Host-centric and narrow environment diversity", "Not network-scale DDoS or scan evidence", "Scenario labels are not causal RCA", "No remediation outcomes"],
+    "acquisition_limitations": "Institutional landing page DNS-unreachable; no sequence files downloaded.",
     "record_count": "NOT VERIFIED"
   }
 ]
