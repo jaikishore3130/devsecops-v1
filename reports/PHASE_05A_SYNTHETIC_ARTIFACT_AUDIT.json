@@ -1,0 +1,81 @@
+{
+  "conclusion": "The independent calendar is not a deterministic current-label shift; associations are descriptive only and no model was trained.",
+  "exact_safe_feature_proxy_fields": [],
+  "future_rate_by_current_incident_label": {
+    "0": 0.05823465794071157,
+    "1": 0.059186455269388046
+  },
+  "future_rate_by_current_incident_type": {
+    "C1": 0.059386009058882736,
+    "C2": 0.07614725163893091,
+    "C3": 0.05252387448840382,
+    "C4": 0.05193578847969783,
+    "C5": 0.05555555555555555,
+    "D1": 0.05814337628014536,
+    "D2": 0.05630565929330652,
+    "none": 0.05823465794071157
+  },
+  "top_univariate_numeric_associations": [
+    {
+      "feature": "hour_of_day",
+      "roc_auc": 0.5302518385373405
+    },
+    {
+      "feature": "byte_rate",
+      "roc_auc": 0.5169833299290549
+    },
+    {
+      "feature": "dependency_count",
+      "roc_auc": 0.51626989846172
+    },
+    {
+      "feature": "network_out_bytes",
+      "roc_auc": 0.5156005864437091
+    },
+    {
+      "feature": "network_in_bytes",
+      "roc_auc": 0.5137705298419053
+    },
+    {
+      "feature": "traffic_volume_bytes",
+      "roc_auc": 0.5115188583411632
+    },
+    {
+      "feature": "day_of_week",
+      "roc_auc": 0.511499750806814
+    },
+    {
+      "feature": "resource_usage_memory",
+      "roc_auc": 0.5106337132508136
+    },
+    {
+      "feature": "request_rate_rolling_mean",
+      "roc_auc": 0.5095292454757139
+    },
+    {
+      "feature": "memory_utilization",
+      "roc_auc": 0.5094721225903382
+    },
+    {
+      "feature": "successful_auth_attempts",
+      "roc_auc": 0.5092729859153651
+    },
+    {
+      "feature": "load_average",
+      "roc_auc": 0.5087021056597265
+    },
+    {
+      "feature": "scan_burst_score",
+      "roc_auc": 0.5086025700033135
+    },
+    {
+      "feature": "request_rate",
+      "roc_auc": 0.5084141454580117
+    },
+    {
+      "feature": "pipeline_duration_seconds",
+      "roc_auc": 0.5082074703487343
+    }
+  ],
+  "validation_rows": 50000
+}

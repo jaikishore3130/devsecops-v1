@@ -1,0 +1,88 @@
+{
+  "checks": {
+    "current_incident_future_none_examples": true,
+    "current_normal_future_incident_examples": true,
+    "future_fields_excluded_from_safe_features": true,
+    "future_label_not_current_label": true,
+    "future_time_strictly_after_cutoff": true,
+    "future_time_within_horizon": true,
+    "negative_rows_have_no_future_time": true,
+    "not_all_positive_at_horizon": true,
+    "phase5_hashes_unchanged": true,
+    "phase6_artifacts_unchanged": true,
+    "row_counts": true,
+    "schema": true,
+    "time_to_incident_matches": true,
+    "time_to_incident_varies": true
+  },
+  "model_training_started": false,
+  "phase5_hashes": {
+    "test": "5e7630dd74b2b0397b7b7663679bb03bbb6d8b837329421dfba59701e643b551",
+    "train": "8eff3b18a1a842212efa442336ee008838cd05bd92854f5b95d0ae527a48b984",
+    "validation": "03639436e44de2c6e95199c80033aed01ac4dfb842e7dd9b08c158a61893a68d"
+  },
+  "phase6_artifact_hashes": {
+    "selected_detection_model.joblib": "fb71ddcbdd987e5b1aedd8a70773c6d1cbcb8fdc260cc71762d19f322cbe1ba4",
+    "selected_detection_model.json": "efaf02b5bcff02869539c03006dc3af1d88ea9fabd2514a812fc88d5b65bc8dc"
+  },
+  "splits": {
+    "test": {
+      "current_incident_future_none": 13060,
+      "current_normal_future_incident": 2266,
+      "equality_count": 34674,
+      "equality_rate": 0.69348,
+      "future_time_beyond_horizon": 0,
+      "future_time_not_after": 0,
+      "negative_future_time_count": 0,
+      "positive_at_horizon": 0,
+      "positive_count": 3092,
+      "rows": 50000,
+      "schema_columns": 110,
+      "time_to_incident_max": 899.0,
+      "time_to_incident_mean": 447.1478007761966,
+      "time_to_incident_median": 447.5,
+      "time_to_incident_min": 1.0,
+      "time_to_incident_mismatch": 0,
+      "time_to_incident_unique": 840
+    },
+    "train": {
+      "current_incident_future_none": 264212,
+      "current_normal_future_incident": 42745,
+      "equality_count": 693043,
+      "equality_rate": 0.693043,
+      "future_time_beyond_horizon": 0,
+      "future_time_not_after": 0,
+      "negative_future_time_count": 0,
+      "positive_at_horizon": 0,
+      "positive_count": 59212,
+      "rows": 1000000,
+      "schema_columns": 110,
+      "time_to_incident_max": 899.0,
+      "time_to_incident_mean": 445.25175640072956,
+      "time_to_incident_median": 443.0,
+      "time_to_incident_min": 1.0,
+      "time_to_incident_mismatch": 0,
+      "time_to_incident_unique": 885
+    },
+    "validation": {
+      "current_incident_future_none": 13114,
+      "current_normal_future_incident": 2100,
+      "equality_count": 34786,
+      "equality_rate": 0.69572,
+      "future_time_beyond_horizon": 0,
+      "future_time_not_after": 0,
+      "negative_future_time_count": 0,
+      "positive_at_horizon": 0,
+      "positive_count": 2925,
+      "rows": 50000,
+      "schema_columns": 110,
+      "time_to_incident_max": 899.0,
+      "time_to_incident_mean": 444.0276923076923,
+      "time_to_incident_median": 443.0,
+      "time_to_incident_min": 1.0,
+      "time_to_incident_mismatch": 0,
+      "time_to_incident_unique": 855
+    }
+  },
+  "status": "COMPLETE"
+}
