@@ -7,6 +7,9 @@ region,string,environment,Logical region,,,categorical,context,pre-event,no,low,
 service_id,string,service,Service UUID,,UUID,,identity,pre-event,no,high,yes
 host_id,string,host,Host or node UUID,,UUID,,identity,pre-event,no,high,yes
 workload_id,string,workload,Workload UUID,,UUID,,identity,pre-event,no,high,yes
+window_id,string,telemetry_window,Observation-window UUID,,UUID,,identity,pre-event,no,high,yes
+incident_id,string,incident,Incident-group UUID,,UUID,,identity,all,no,high,yes
+event_id,string,event,Event UUID,,UUID,,identity,all,no,high,yes
 deployment_id,string,deployment,Deployment UUID,,UUID,,identity,pre-event,no,high,no
 deployment_frequency,float,service,Deployments per day,per_day,>=0,,raw,pre-event,no,low,no
 deployment_age_seconds,float,deployment,Age since deployment start,seconds,>=0,,derived,pre-event,no,low,no

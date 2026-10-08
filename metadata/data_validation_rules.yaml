@@ -2,9 +2,17 @@ validation_rules_version: 1.0.0
 scope: synthetic_schema_and_future_external_mappings
 schema:
   required_columns_source: metadata/synthetic_schema.csv
+  expected_field_count: 110
   reject_unknown_columns: true
   require_unique_field_names: true
   require_contract_version: true
+  required_identifiers: [event_id, incident_id, window_id]
+identifiers:
+  format: UUID-style strings
+  event_id: {required: true, uniqueness: global_dataset}
+  incident_id: {required: true, uniqueness: service_and_split_scope, grouping_control: true}
+  window_id: {required: true, uniqueness: split_scope, grouping_control: true}
+  ordinary_predictor_policy: exclude all identifier fields unless an evaluation protocol explicitly treats them as grouping metadata
 datatypes:
   datetime: ISO-8601 with explicit timezone at interchange boundary
   identifier: UUID-style string; names are not keys

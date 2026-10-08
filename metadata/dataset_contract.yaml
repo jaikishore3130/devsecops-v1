@@ -42,6 +42,21 @@ identifiers:
   leakage_control_keys: [org_id, project_id, service_id, host_id, workload_id, incident_id, window_id, session_group_id, source_group_id, destination_group_id]
   non_feature_identifiers: [org_id, project_id, environment_id, service_id, deployment_id, host_id, workload_id, pipeline_id, job_id, incident_id, event_id, window_id]
   format: UUID-style strings; names are never primary keys
+  canonical_schema_field_count: 110
+  scope_rules:
+    org_id: globally unique organization identity
+    project_id: unique within organization
+    environment_id: unique within project
+    service_id: unique within environment
+    deployment_id: unique deployment identity
+    host_id: unique within environment
+    workload_id: unique within service
+    pipeline_id: unique within project
+    job_id: unique within pipeline
+    window_id: unique observation-window identity within a split
+    incident_id: unique incident-group identity within service and split
+    event_id: globally unique event identity within the generated dataset
+  control_role: identifiers are grouping, ordering, duplicate-isolation, and leakage-control fields, not default predictive features
 feature_groups:
   identity_context: [org_id, project_id, environment_id, environment, region, service_id, host_id, workload_id]
   deployment: [deployment_id, deployment_frequency, deployment_age_seconds, version_age_seconds, change_size, config_change_count, rollback_count]

@@ -5,6 +5,9 @@ environment,identity_context,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,lo
 service_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
 host_id,identity_context,synthetic|external,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
 workload_id,identity_context,synthetic|documented,yes,yes,yes,group_only,group_only,yes,yes,high,entity identifier
+window_id,identity_context,synthetic,yes,yes,yes,group_only,group_only,yes,yes,high,unique observation-window grouping and leakage-control identifier
+incident_id,identity_context,synthetic,yes,yes,yes,group_only,group_only,yes,yes,high,incident grouping identifier scoped to service and split
+event_id,identity_context,synthetic,yes,yes,yes,group_only,group_only,yes,yes,high,unique event ordering and duplicate-control identifier
 deployment_age_seconds,deployment,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,cutoff-safe elapsed time
 change_size,deployment,synthetic|documented,yes,yes,yes,yes,yes,yes,yes,low,raw deployment metadata
 config_change_count,deployment,synthetic,yes,yes,yes,yes,yes,yes,yes,low,pre-cutoff count

@@ -229,3 +229,16 @@ models until those gates are approved.
 **PARTIAL / design complete, evidence incomplete.** Phase 4 artifacts are
 ready for review and later implementation. No synthetic dataset, model,
 metric, dashboard, API, or autonomous remediation was created.
+
+## Phase 4A Contract Correction
+
+Phase 5 implementation review detected that the original 107-field canonical
+schema omitted `event_id`, `incident_id`, and `window_id`, despite the entity
+contract defining them as required identifiers. The correction adds these three
+fields to the canonical schema, increasing it to 110 fields. They are grouping,
+ordering, duplicate-isolation, and leakage-control fields, not default model
+predictors. No synthetic records or models were produced during this
+correction. This audit event restores consistency with the existing entity and
+leakage architecture without changing the incident taxonomy, W/t/H design,
+scenario philosophy, external-validation policy, hypotheses, or remediation
+definition.

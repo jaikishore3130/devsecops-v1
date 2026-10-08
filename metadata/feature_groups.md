@@ -4,6 +4,15 @@ This taxonomy accompanies `synthetic_schema.csv` and
 `dataset_contract.yaml`. It describes intended availability, not observed
 coverage in every external dataset.
 
+## Identifier and Grouping-Control Fields
+
+`event_id`, `incident_id`, and `window_id` are canonical schema fields. They
+identify events, incident groups, and observation windows respectively. They
+are available for ordering, grouping, duplicate isolation, temporal grouping,
+RCA/remediation grouping, and leakage-safe split validation. They are not
+default predictive telemetry features and must be excluded from ordinary model
+feature matrices unless a protocol explicitly uses them as grouping metadata.
+
 ## 1. Identity and Context
 
 Organization, project, environment, region, service, host, and workload IDs
