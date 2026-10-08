@@ -1,0 +1,142 @@
+contract_name: d1_detection_feature_contract
+version: 1.0.0
+task: binary_general_incident_detection
+target:
+  field: incident_label
+  values: {0: normal, 1: incident_or_anomalous_event}
+  positive_incident_types: [D1, D2, C1, C2, C3, C4, C5]
+dataset_commit: 0f6bb59
+classification_policy:
+  SAFE_FEATURE: pre-cutoff telemetry/context used by the detector
+  IDENTIFIER: grouping, ordering, or leakage-control field; never a predictor
+  TARGET: current detection/taxonomy target; never a predictor
+  FUTURE_TARGET: target available only after the detection cutoff
+  POST_INCIDENT: outcome or timestamp after the detection observation
+  RCA_ONLY: synthetic RCA annotation; not a detector predictor
+  REMEDIATION_ONLY: recommendation annotation; not a detector predictor
+  UNSAFE: unavailable before cutoff, raw time identity, or otherwise leakage-prone
+fields:
+  IDENTIFIER:
+    - org_id
+    - project_id
+    - environment_id
+    - service_id
+    - host_id
+    - workload_id
+    - window_id
+    - incident_id
+    - event_id
+    - deployment_id
+    - pipeline_id
+    - job_id
+    - src_ip_group
+    - dst_ip_group
+  TARGET:
+    - incident_label
+    - incident_type
+  FUTURE_TARGET:
+    - future_incident_label
+    - future_incident_time
+    - time_to_incident
+  RCA_ONLY:
+    - root_cause_category
+    - root_component
+  REMEDIATION_ONLY:
+    - recommended_action
+  UNSAFE:
+    - failed_tasks
+    - terminated_tasks
+    - eviction_count
+    - flow_duration_seconds
+    - bytes_in
+    - bytes_out
+    - packets_in
+    - packets_out
+    - event_timestamp
+    - window_start
+    - window_end
+    - prediction_timestamp
+  SAFE_FEATURE:
+    - environment
+    - region
+    - deployment_frequency
+    - deployment_age_seconds
+    - version_age_seconds
+    - change_size
+    - config_change_count
+    - rollback_count
+    - pipeline_duration_seconds
+    - queue_time_seconds
+    - build_duration_seconds
+    - test_duration_seconds
+    - deployment_duration_seconds
+    - retry_count
+    - job_count
+    - step_count
+    - artifact_count
+    - dependency_count
+    - cpu_utilization
+    - memory_utilization
+    - disk_utilization
+    - network_in_bytes
+    - network_out_bytes
+    - io_wait
+    - load_average
+    - process_count
+    - thread_count
+    - open_connections
+    - file_descriptor_usage
+    - task_count
+    - cloud_job_count
+    - instance_count
+    - pending_tasks
+    - running_tasks
+    - resource_requests_cpu
+    - resource_requests_memory
+    - resource_usage_cpu
+    - resource_usage_memory
+    - scheduling_delay_seconds
+    - queue_length
+    - node_pressure
+    - restart_count
+    - src_port
+    - dst_port
+    - protocol
+    - service
+    - connection_count
+    - packet_rate
+    - byte_rate
+    - connection_rate
+    - auth_attempts
+    - failed_auth_attempts
+    - successful_auth_attempts
+    - unique_source_count
+    - credential_failure_rate
+    - unique_destination_ports
+    - unique_destination_hosts
+    - connection_attempt_rate
+    - port_entropy
+    - host_entropy
+    - scan_burst_score
+    - request_rate
+    - source_count
+    - source_entropy
+    - traffic_volume_bytes
+    - observation_age_seconds
+    - hour_of_day
+    - day_of_week
+    - cpu_delta
+    - memory_slope
+    - request_rate_rolling_mean
+    - request_rate_rolling_std
+    - failure_rate
+    - retry_rate
+    - burst_score
+    - anomaly_score
+exclusion_reasons:
+  IDENTIFIER: "Excluded to prevent entity memorization and preserve grouping/leakage controls."
+  TARGET: "Excluded because it is the current detection target or its taxonomy."
+  FUTURE_TARGET: "Excluded because it is only available after the detection cutoff."
+  RCA_ONLY: "Excluded because it is a downstream synthetic RCA annotation, not detection evidence."
+  REMEDIATION_ONLY: "Excluded because it is a recommendation target, not detection evidence."
+  UNSAFE: "Excluded because the field is during-event, post-cutoff identity/time metadata, or raw time that can encode split membership."
