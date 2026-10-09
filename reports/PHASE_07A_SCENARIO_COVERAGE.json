@@ -1,0 +1,72 @@
+{
+  "future_type_counts": {
+    "test": {
+      "C1": 860,
+      "C2": 817,
+      "C3": 685,
+      "C4": 600,
+      "C5": 684,
+      "D1": 795,
+      "D2": 1082
+    },
+    "train": {
+      "C1": 16216,
+      "C2": 16524,
+      "C3": 13293,
+      "C4": 11840,
+      "C5": 13253,
+      "D1": 16542,
+      "D2": 21892
+    },
+    "validation": {
+      "C1": 837,
+      "C2": 872,
+      "C3": 668,
+      "C4": 570,
+      "C5": 668,
+      "D1": 823,
+      "D2": 1053
+    }
+  },
+  "latent_state_counts": {
+    "test": {
+      "DEGRADATION": 755,
+      "EARLY_SIGNAL": 2639,
+      "ESCALATION": 39,
+      "NORMAL": 2090
+    },
+    "train": {
+      "DEGRADATION": 14858,
+      "EARLY_SIGNAL": 52209,
+      "ESCALATION": 740,
+      "NORMAL": 41753
+    },
+    "validation": {
+      "DEGRADATION": 763,
+      "EARLY_SIGNAL": 2582,
+      "ESCALATION": 37,
+      "NORMAL": 2109
+    }
+  },
+  "lead_time": {
+    "test": {
+      "max": 899.0,
+      "median": 633.0,
+      "min": 60.0,
+      "unique": 687
+    },
+    "train": {
+      "max": 899.0,
+      "median": 631.0,
+      "min": 1.0,
+      "unique": 849
+    },
+    "validation": {
+      "max": 899.0,
+      "median": 630.0,
+      "min": 1.0,
+      "unique": 691
+    }
+  },
+  "status": "PASS"
+}

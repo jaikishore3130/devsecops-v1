@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "duplicate_isolation": true,
+    "entity_isolation": true,
+    "future_labels_excluded_from_features": true,
+    "future_time_excluded_from_features": true,
+    "future_type_excluded_from_features": true,
+    "identifiers_excluded": true,
+    "no_deterministic_target_proxy": true,
+    "post_event_excluded": true,
+    "rca_remediation_excluded": true,
+    "recovery_excluded": true,
+    "temporal_split_separation": true,
+    "test_untouched": true
+  },
+  "feature_policy": "SAFE_FIELDS only; future target/type/time and latent diagnostic state are targets/diagnostics, never predictors.",
+  "status": "PASS"
+}

@@ -1,0 +1,25 @@
+{
+  "generator_version": "7A-latent-scenario-v1",
+  "observation_window_seconds": 900,
+  "prediction_horizon_seconds": 900,
+  "schema_fields": 112,
+  "seed": 20261008,
+  "splits": {
+    "test": {
+      "columns": 112,
+      "rows": 50000,
+      "sha256": "c737990db0e256f116904d4bd1151ea10c62be9bae9b9be202e1a4106188306d"
+    },
+    "train": {
+      "columns": 112,
+      "rows": 1000000,
+      "sha256": "57f8fc0156fd6ac244c46043958463f12fb954ccd2174dccf9330e6b95de0ba6"
+    },
+    "validation": {
+      "columns": 112,
+      "rows": 50000,
+      "sha256": "02d8bec033dc03941e7291cbc014dedc122fb32364547b9d51ff8a2b55d476be"
+    }
+  },
+  "status": "COMPLETE"
+}

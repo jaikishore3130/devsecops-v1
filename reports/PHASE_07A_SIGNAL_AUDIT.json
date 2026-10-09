@@ -1,0 +1,269 @@
+{
+  "checks": {
+    "diagnostic_reproducibility": true,
+    "entity_isolation": true,
+    "future_times_valid": true,
+    "future_types_exist": true,
+    "latent_signal_above_independence": true,
+    "no_model_training": true,
+    "no_target_proxy": true,
+    "not_all_at_horizon": true,
+    "old_artifacts_preserved": true,
+    "row_counts": true,
+    "schema": true,
+    "variable_lead_times": true
+  },
+  "entity_isolation": {
+    "intersections": {
+      "event_id": false,
+      "incident_id": false,
+      "workload_id": false
+    },
+    "pass": true
+  },
+  "generated_at": "2026-10-09T06:33:18.442178+00:00",
+  "preserved_hashes": {
+    "phase5": {
+      "test": "5e7630dd74b2b0397b7b7663679bb03bbb6d8b837329421dfba59701e643b551",
+      "train": "8eff3b18a1a842212efa442336ee008838cd05bd92854f5b95d0ae527a48b984",
+      "validation": "03639436e44de2c6e95199c80033aed01ac4dfb842e7dd9b08c158a61893a68d"
+    },
+    "phase5a": {
+      "test": "f07999861f05488a494da624efb0e1acd26260e1a2e782f862c94d02a933acea",
+      "train": "2135c42f7822dd4ef49b5c7c327c8a2d64fc79b838da15a2302d641b8a736a77",
+      "validation": "2faf5916b041d9f0bc19bb94c0976dd3fd95f9624e03d92b919f83b7971d4b66"
+    },
+    "phase6": {
+      "selected_detection_model.joblib": "fb71ddcbdd987e5b1aedd8a70773c6d1cbcb8fdc260cc71762d19f322cbe1ba4",
+      "selected_detection_model.json": "efaf02b5bcff02869539c03006dc3af1d88ea9fabd2514a812fc88d5b65bc8dc"
+    },
+    "phase7": {
+      "PHASE_07_PREDICTION_RESULTS.json": "42a32aa3800d70117cb6c15efedb5e85b58e2952a4f6c7c6128d066b819cb442",
+      "selected_prediction_model.joblib": "c5bdc99ca05043ccfd8074b0e71946e73b245e05754c561b9d264280cc0a53c8"
+    }
+  },
+  "signal": {
+    "future_rate_by_current_incident_label": {
+      "0": 0.11059038850836084,
+      "1": 0.10782696032713968
+    },
+    "future_rate_by_latent_state": {
+      "DEGRADATION": 0.22661122661122662,
+      "EARLY_SIGNAL": 0.1473828414863862,
+      "ESCALATION": 0.2781954887218045,
+      "NORMAL": 0.0727718160173907
+    },
+    "future_type_signal": {
+      "C1": {
+        "count": 837,
+        "future_positive_count": 837
+      },
+      "C2": {
+        "count": 872,
+        "future_positive_count": 872
+      },
+      "C3": {
+        "count": 668,
+        "future_positive_count": 668
+      },
+      "C4": {
+        "count": 570,
+        "future_positive_count": 570
+      },
+      "C5": {
+        "count": 668,
+        "future_positive_count": 668
+      },
+      "D1": {
+        "count": 823,
+        "future_positive_count": 823
+      },
+      "D2": {
+        "count": 1053,
+        "future_positive_count": 1053
+      }
+    },
+    "lead_time_bucket_signal": {
+      "0_300": {
+        "future_positive_count": 162,
+        "positive_rate": 1.0,
+        "rows": 162
+      },
+      "301_600": {
+        "future_positive_count": 2208,
+        "positive_rate": 1.0,
+        "rows": 2208
+      },
+      "601_899": {
+        "future_positive_count": 3121,
+        "positive_rate": 1.0,
+        "rows": 3121
+      }
+    },
+    "max_univariate_auc": 0.5984608037484814,
+    "top_safe_univariate_auc": [
+      {
+        "feature": "source_count",
+        "roc_auc": 0.5984608037484814
+      },
+      {
+        "feature": "restart_count",
+        "roc_auc": 0.5783313489205736
+      },
+      {
+        "feature": "scheduling_delay_seconds",
+        "roc_auc": 0.5651874262177076
+      },
+      {
+        "feature": "request_rate",
+        "roc_auc": 0.5584457679209293
+      },
+      {
+        "feature": "memory_slope",
+        "roc_auc": 0.549822742873916
+      },
+      {
+        "feature": "unique_destination_ports",
+        "roc_auc": 0.5465412430895409
+      },
+      {
+        "feature": "retry_count",
+        "roc_auc": 0.5447269879291078
+      },
+      {
+        "feature": "cpu_delta",
+        "roc_auc": 0.5383800081374337
+      },
+      {
+        "feature": "auth_attempts",
+        "roc_auc": 0.531337227395838
+      },
+      {
+        "feature": "queue_length",
+        "roc_auc": 0.528971457930221
+      },
+      {
+        "feature": "cpu_utilization",
+        "roc_auc": 0.5122871595025346
+      },
+      {
+        "feature": "anomaly_score",
+        "roc_auc": 0.5109510283881411
+      },
+      {
+        "feature": "io_wait",
+        "roc_auc": 0.5108919201070606
+      },
+      {
+        "feature": "memory_utilization",
+        "roc_auc": 0.5096277655794378
+      },
+      {
+        "feature": "deployment_age_seconds",
+        "roc_auc": 0.5089843993949907
+      }
+    ]
+  },
+  "splits": {
+    "test": {
+      "columns": 112,
+      "current_incident_future_none": 12354,
+      "current_normal_future": 3991,
+      "future_types": {
+        "C1": 860,
+        "C2": 817,
+        "C3": 685,
+        "C4": 600,
+        "C5": 684,
+        "D1": 795,
+        "D2": 1082
+      },
+      "invalid_time": 0,
+      "lead_time": {
+        "max": 899.0,
+        "median": 633.0,
+        "min": 60.0,
+        "unique": 687
+      },
+      "negative_time_values": 0,
+      "positive": 5523,
+      "positive_at_horizon": 0,
+      "positive_rate": 0.11046,
+      "rows": 50000,
+      "states": {
+        "DEGRADATION": 755,
+        "EARLY_SIGNAL": 2639,
+        "ESCALATION": 39,
+        "NORMAL": 2090
+      },
+      "target_proxy_features": []
+    },
+    "train": {
+      "columns": 112,
+      "current_incident_future_none": 249808,
+      "current_normal_future": 78689,
+      "future_types": {
+        "C1": 16216,
+        "C2": 16524,
+        "C3": 13293,
+        "C4": 11840,
+        "C5": 13253,
+        "D1": 16542,
+        "D2": 21892
+      },
+      "invalid_time": 0,
+      "lead_time": {
+        "max": 899.0,
+        "median": 631.0,
+        "min": 1.0,
+        "unique": 849
+      },
+      "negative_time_values": 0,
+      "positive": 109560,
+      "positive_at_horizon": 0,
+      "positive_rate": 0.10956,
+      "rows": 1000000,
+      "states": {
+        "DEGRADATION": 14858,
+        "EARLY_SIGNAL": 52209,
+        "ESCALATION": 740,
+        "NORMAL": 41753
+      },
+      "target_proxy_features": []
+    },
+    "validation": {
+      "columns": 112,
+      "current_incident_future_none": 12436,
+      "current_normal_future": 3988,
+      "future_types": {
+        "C1": 837,
+        "C2": 872,
+        "C3": 668,
+        "C4": 570,
+        "C5": 668,
+        "D1": 823,
+        "D2": 1053
+      },
+      "invalid_time": 0,
+      "lead_time": {
+        "max": 899.0,
+        "median": 630.0,
+        "min": 1.0,
+        "unique": 691
+      },
+      "negative_time_values": 0,
+      "positive": 5491,
+      "positive_at_horizon": 0,
+      "positive_rate": 0.10982,
+      "rows": 50000,
+      "states": {
+        "DEGRADATION": 763,
+        "EARLY_SIGNAL": 2582,
+        "ESCALATION": 37,
+        "NORMAL": 2109
+      },
+      "target_proxy_features": []
+    }
+  },
+  "status": "COMPLETE"
+}
