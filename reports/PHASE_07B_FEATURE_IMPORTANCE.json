@@ -1,0 +1,173 @@
+{
+  "feature_name_space": "ColumnTransformer output names (numeric__*, categorical__*)",
+  "leakage_scan": {
+    "forbidden_features_in_top30": [],
+    "passed": true
+  },
+  "method": "validation permutation importance (scoring=average_precision, n_repeats=10, n=20000)",
+  "selected_model": "xgboost",
+  "top_features": [
+    {
+      "feature": "numeric__request_rate",
+      "importance": 0.42869192239130555
+    },
+    {
+      "feature": "numeric__request_rate_rolling_mean",
+      "importance": 0.35928523709435195
+    },
+    {
+      "feature": "numeric__auth_attempts",
+      "importance": 0.3420305652752874
+    },
+    {
+      "feature": "numeric__successful_auth_attempts",
+      "importance": 0.27675613057069814
+    },
+    {
+      "feature": "numeric__restart_count",
+      "importance": 0.1851696487175777
+    },
+    {
+      "feature": "numeric__retry_count",
+      "importance": 0.15640469212038718
+    },
+    {
+      "feature": "numeric__unique_destination_ports",
+      "importance": 0.14997031584438605
+    },
+    {
+      "feature": "numeric__unique_destination_hosts",
+      "importance": 0.09002534135953857
+    },
+    {
+      "feature": "numeric__source_count",
+      "importance": 0.06745101347567942
+    },
+    {
+      "feature": "numeric__failed_auth_attempts",
+      "importance": 0.04039019548913393
+    },
+    {
+      "feature": "numeric__io_wait",
+      "importance": 0.03757616836629098
+    },
+    {
+      "feature": "numeric__change_size",
+      "importance": 0.02710616725983076
+    },
+    {
+      "feature": "numeric__missingindicator_request_rate_rolling_mean",
+      "importance": 0.02366681136371255
+    },
+    {
+      "feature": "numeric__missingindicator_successful_auth_attempts",
+      "importance": 0.012527122443961813
+    },
+    {
+      "feature": "numeric__scheduling_delay_seconds",
+      "importance": 0.010921168777180546
+    },
+    {
+      "feature": "numeric__memory_slope",
+      "importance": 0.010177656022253723
+    },
+    {
+      "feature": "numeric__credential_failure_rate",
+      "importance": 0.008248185854277801
+    },
+    {
+      "feature": "numeric__queue_time_seconds",
+      "importance": 0.004577605118974537
+    },
+    {
+      "feature": "numeric__missingindicator_unique_destination_hosts",
+      "importance": 0.0032191513350553814
+    },
+    {
+      "feature": "numeric__failure_rate",
+      "importance": 0.0025341878138923192
+    }
+  ],
+  "top_features_native": [
+    {
+      "feature": "numeric__missingindicator_io_wait",
+      "importance": 0.08756092190742493
+    },
+    {
+      "feature": "numeric__missingindicator_build_duration_seconds",
+      "importance": 0.08237311244010925
+    },
+    {
+      "feature": "numeric__source_count",
+      "importance": 0.07006245851516724
+    },
+    {
+      "feature": "numeric__missingindicator_request_rate_rolling_mean",
+      "importance": 0.06326036155223846
+    },
+    {
+      "feature": "numeric__restart_count",
+      "importance": 0.046931132674217224
+    },
+    {
+      "feature": "numeric__request_rate_rolling_mean",
+      "importance": 0.04134857654571533
+    },
+    {
+      "feature": "numeric__unique_destination_hosts",
+      "importance": 0.03669501096010208
+    },
+    {
+      "feature": "numeric__missingindicator_successful_auth_attempts",
+      "importance": 0.03592715039849281
+    },
+    {
+      "feature": "numeric__unique_destination_ports",
+      "importance": 0.03281272575259209
+    },
+    {
+      "feature": "numeric__io_wait",
+      "importance": 0.027587931603193283
+    },
+    {
+      "feature": "numeric__request_rate",
+      "importance": 0.02727508172392845
+    },
+    {
+      "feature": "numeric__missingindicator_change_size",
+      "importance": 0.026798438280820847
+    },
+    {
+      "feature": "numeric__failed_auth_attempts",
+      "importance": 0.02525244653224945
+    },
+    {
+      "feature": "numeric__retry_count",
+      "importance": 0.024968672543764114
+    },
+    {
+      "feature": "numeric__missingindicator_unique_destination_hosts",
+      "importance": 0.024467110633850098
+    },
+    {
+      "feature": "numeric__successful_auth_attempts",
+      "importance": 0.020579269155859947
+    },
+    {
+      "feature": "numeric__change_size",
+      "importance": 0.01946435309946537
+    },
+    {
+      "feature": "numeric__credential_failure_rate",
+      "importance": 0.01560058631002903
+    },
+    {
+      "feature": "numeric__missingindicator_failed_auth_attempts",
+      "importance": 0.015478283166885376
+    },
+    {
+      "feature": "numeric__missingindicator_queue_time_seconds",
+      "importance": 0.015386746264994144
+    }
+  ]
+}

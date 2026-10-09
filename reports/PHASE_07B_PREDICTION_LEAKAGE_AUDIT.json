@@ -1,0 +1,29 @@
+{
+  "allowed_feature_count": 76,
+  "checks": {
+    "dataset_hashes_match_frozen_phase7a": true,
+    "future_incident_label_excluded": true,
+    "future_incident_time_excluded": true,
+    "future_incident_type_excluded": true,
+    "identifiers_excluded": true,
+    "importance_leakage_scan": true,
+    "incident_label_excluded": true,
+    "incident_type_excluded": true,
+    "latent_scenario_state_excluded": true,
+    "model_reload_identical": true,
+    "post_event_excluded": true,
+    "rca_remediation_excluded": true,
+    "time_to_incident_excluded": true
+  },
+  "feature_policy": "SAFE_FEATURE only; future target/type/time, lead time, latent diagnostic state, identifiers, current labels, RCA, remediation and post-event fields excluded.",
+  "forbidden_groups": {
+    "ANALYSIS_ONLY": 2,
+    "FUTURE_TARGET": 3,
+    "IDENTIFIER": 14,
+    "RCA_ONLY": 2,
+    "REMEDIATION_ONLY": 1,
+    "TARGET": 2,
+    "UNSAFE": 12
+  },
+  "status": "PASS"
+}

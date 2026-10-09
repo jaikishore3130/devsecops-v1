@@ -1,0 +1,437 @@
+task: Phase 7B future incident prediction on frozen Phase 7A dataset
+dataset: /workspaces/devsecops-v1/data/processed/prediction_v2
+seed: 20261008
+observation_window_seconds: 900
+prediction_horizon_seconds: 900
+target: future_incident_label
+feature_contract:
+  policy: AGENTS SAFE_FEATURE only; future/latent/identifier/RCA/remediation/post-event
+    excluded
+  allowed_features:
+  - environment
+  - region
+  - deployment_frequency
+  - deployment_age_seconds
+  - version_age_seconds
+  - change_size
+  - config_change_count
+  - rollback_count
+  - pipeline_duration_seconds
+  - queue_time_seconds
+  - build_duration_seconds
+  - test_duration_seconds
+  - deployment_duration_seconds
+  - retry_count
+  - job_count
+  - step_count
+  - artifact_count
+  - dependency_count
+  - cpu_utilization
+  - memory_utilization
+  - disk_utilization
+  - network_in_bytes
+  - network_out_bytes
+  - io_wait
+  - load_average
+  - process_count
+  - thread_count
+  - open_connections
+  - file_descriptor_usage
+  - task_count
+  - cloud_job_count
+  - instance_count
+  - pending_tasks
+  - running_tasks
+  - resource_requests_cpu
+  - resource_requests_memory
+  - resource_usage_cpu
+  - resource_usage_memory
+  - scheduling_delay_seconds
+  - queue_length
+  - node_pressure
+  - restart_count
+  - src_port
+  - dst_port
+  - protocol
+  - service
+  - connection_count
+  - packet_rate
+  - byte_rate
+  - connection_rate
+  - auth_attempts
+  - failed_auth_attempts
+  - successful_auth_attempts
+  - unique_source_count
+  - credential_failure_rate
+  - unique_destination_ports
+  - unique_destination_hosts
+  - connection_attempt_rate
+  - port_entropy
+  - host_entropy
+  - scan_burst_score
+  - request_rate
+  - source_count
+  - source_entropy
+  - traffic_volume_bytes
+  - observation_age_seconds
+  - hour_of_day
+  - day_of_week
+  - cpu_delta
+  - memory_slope
+  - request_rate_rolling_mean
+  - request_rate_rolling_std
+  - failure_rate
+  - retry_rate
+  - burst_score
+  - anomaly_score
+  feature_count: 76
+  forbidden_groups:
+    IDENTIFIER:
+    - org_id
+    - project_id
+    - environment_id
+    - service_id
+    - host_id
+    - workload_id
+    - window_id
+    - incident_id
+    - event_id
+    - deployment_id
+    - pipeline_id
+    - job_id
+    - src_ip_group
+    - dst_ip_group
+    TARGET:
+    - incident_label
+    - incident_type
+    FUTURE_TARGET:
+    - future_incident_label
+    - future_incident_time
+    - time_to_incident
+    RCA_ONLY:
+    - root_cause_category
+    - root_component
+    REMEDIATION_ONLY:
+    - recommended_action
+    UNSAFE:
+    - failed_tasks
+    - terminated_tasks
+    - eviction_count
+    - flow_duration_seconds
+    - bytes_in
+    - bytes_out
+    - packets_in
+    - packets_out
+    - event_timestamp
+    - window_start
+    - window_end
+    - prediction_timestamp
+    ANALYSIS_ONLY:
+    - future_incident_type
+    - latent_scenario_state
+feature_groups:
+  ALL_SAFE_FEATURES:
+  - anomaly_score
+  - artifact_count
+  - auth_attempts
+  - build_duration_seconds
+  - burst_score
+  - byte_rate
+  - change_size
+  - cloud_job_count
+  - config_change_count
+  - connection_attempt_rate
+  - connection_count
+  - connection_rate
+  - cpu_delta
+  - cpu_utilization
+  - credential_failure_rate
+  - day_of_week
+  - dependency_count
+  - deployment_age_seconds
+  - deployment_duration_seconds
+  - deployment_frequency
+  - disk_utilization
+  - dst_port
+  - environment
+  - failed_auth_attempts
+  - failure_rate
+  - file_descriptor_usage
+  - host_entropy
+  - hour_of_day
+  - instance_count
+  - io_wait
+  - job_count
+  - load_average
+  - memory_slope
+  - memory_utilization
+  - network_in_bytes
+  - network_out_bytes
+  - node_pressure
+  - observation_age_seconds
+  - open_connections
+  - packet_rate
+  - pending_tasks
+  - pipeline_duration_seconds
+  - port_entropy
+  - process_count
+  - protocol
+  - queue_length
+  - queue_time_seconds
+  - region
+  - request_rate
+  - request_rate_rolling_mean
+  - request_rate_rolling_std
+  - resource_requests_cpu
+  - resource_requests_memory
+  - resource_usage_cpu
+  - resource_usage_memory
+  - restart_count
+  - retry_count
+  - retry_rate
+  - rollback_count
+  - running_tasks
+  - scan_burst_score
+  - scheduling_delay_seconds
+  - service
+  - source_count
+  - source_entropy
+  - src_port
+  - step_count
+  - successful_auth_attempts
+  - task_count
+  - test_duration_seconds
+  - thread_count
+  - traffic_volume_bytes
+  - unique_destination_hosts
+  - unique_destination_ports
+  - unique_source_count
+  - version_age_seconds
+  INFRASTRUCTURE_CLOUD_WORKLOAD:
+  - cloud_job_count
+  - cpu_utilization
+  - disk_utilization
+  - file_descriptor_usage
+  - instance_count
+  - io_wait
+  - load_average
+  - memory_utilization
+  - network_in_bytes
+  - network_out_bytes
+  - node_pressure
+  - open_connections
+  - pending_tasks
+  - process_count
+  - queue_length
+  - resource_requests_cpu
+  - resource_requests_memory
+  - resource_usage_cpu
+  - resource_usage_memory
+  - restart_count
+  - running_tasks
+  - scheduling_delay_seconds
+  - task_count
+  - thread_count
+  CICD_DEPLOYMENT:
+  - artifact_count
+  - build_duration_seconds
+  - change_size
+  - config_change_count
+  - dependency_count
+  - deployment_age_seconds
+  - deployment_duration_seconds
+  - deployment_frequency
+  - environment
+  - job_count
+  - pipeline_duration_seconds
+  - queue_time_seconds
+  - region
+  - retry_count
+  - rollback_count
+  - step_count
+  - test_duration_seconds
+  - version_age_seconds
+  NETWORK_SECURITY:
+  - auth_attempts
+  - byte_rate
+  - connection_attempt_rate
+  - connection_count
+  - connection_rate
+  - credential_failure_rate
+  - dst_port
+  - failed_auth_attempts
+  - host_entropy
+  - packet_rate
+  - port_entropy
+  - protocol
+  - request_rate
+  - scan_burst_score
+  - service
+  - source_count
+  - source_entropy
+  - src_port
+  - successful_auth_attempts
+  - traffic_volume_bytes
+  - unique_destination_hosts
+  - unique_destination_ports
+  - unique_source_count
+  SAFE_FEATURES_WITHOUT_DERIVED_FEATURES:
+  - artifact_count
+  - auth_attempts
+  - build_duration_seconds
+  - byte_rate
+  - change_size
+  - cloud_job_count
+  - config_change_count
+  - connection_attempt_rate
+  - connection_count
+  - connection_rate
+  - cpu_utilization
+  - credential_failure_rate
+  - day_of_week
+  - dependency_count
+  - deployment_age_seconds
+  - deployment_duration_seconds
+  - deployment_frequency
+  - disk_utilization
+  - dst_port
+  - environment
+  - failed_auth_attempts
+  - file_descriptor_usage
+  - host_entropy
+  - hour_of_day
+  - instance_count
+  - io_wait
+  - job_count
+  - load_average
+  - memory_utilization
+  - network_in_bytes
+  - network_out_bytes
+  - node_pressure
+  - observation_age_seconds
+  - open_connections
+  - packet_rate
+  - pending_tasks
+  - pipeline_duration_seconds
+  - port_entropy
+  - process_count
+  - protocol
+  - queue_length
+  - queue_time_seconds
+  - region
+  - request_rate
+  - resource_requests_cpu
+  - resource_requests_memory
+  - resource_usage_cpu
+  - resource_usage_memory
+  - restart_count
+  - retry_count
+  - rollback_count
+  - running_tasks
+  - scan_burst_score
+  - scheduling_delay_seconds
+  - service
+  - source_count
+  - source_entropy
+  - src_port
+  - step_count
+  - successful_auth_attempts
+  - task_count
+  - test_duration_seconds
+  - thread_count
+  - traffic_volume_bytes
+  - unique_destination_hosts
+  - unique_destination_ports
+  - unique_source_count
+  - version_age_seconds
+preprocessing:
+  fit_on: train only
+  numeric: median imputation + missing indicators + StandardScaler
+  categorical: most-frequent imputation + one-hot (unknown-safe)
+  applied: frozen transform to validation and test
+model_candidates:
+- majority
+- stratified_dummy
+- logistic_regression
+- logistic_regression_balanced
+- random_forest
+- random_forest_balanced
+- xgboost
+- xgboost_balanced
+optional_model_availability:
+  lightgbm:
+    available: false
+    reason: not installed in the frozen environment; documented as skipped, no substitute
+      tuned
+xgboost_params:
+  n_estimators: 250
+  max_depth: 6
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  min_child_weight: 5
+  reg_lambda: 1.0
+  tree_method: hist
+  eval_metric: logloss
+  n_jobs: 2
+  random_state: 20261008
+random_forest_params:
+  n_estimators: 60
+  max_depth: 9
+  min_samples_leaf: 25
+  max_features: sqrt
+  n_jobs: 2
+  random_state: 20261008
+logistic_regression_params:
+  C: 1.0
+  max_iter: 300
+  solver: lbfgs
+  random_state: 20261008
+class_weight_comparison: none vs balanced/balanced_subsample/scale_pos_weight, chosen
+  on validation PR-AUC
+selected_model: xgboost
+selected_threshold: 0.25
+threshold_criterion: 'max validation F1 (tie: recall, then lower FPR)'
+dataset_hashes:
+  train: 57f8fc0156fd6ac244c46043958463f12fb954ccd2174dccf9330e6b95de0ba6
+  validation: 02d8bec033dc03941e7291cbc014dedc122fb32364547b9d51ff8a2b55d476be
+  test: c737990db0e256f116904d4bd1151ea10c62be9bae9b9be202e1a4106188306d
+phase5_original_hashes:
+  train: 8eff3b18a1a842212efa442336ee008838cd05bd92854f5b95d0ae527a48b984
+  validation: 03639436e44de2c6e95199c80033aed01ac4dfb842e7dd9b08c158a61893a68d
+  test: 5e7630dd74b2b0397b7b7663679bb03bbb6d8b837329421dfba59701e643b551
+prediction_v1_hashes:
+  train: 2135c42f7822dd4ef49b5c7c327c8a2d64fc79b838da15a2302d641b8a736a77
+  validation: 2faf5916b041d9f0bc19bb94c0976dd3fd95f9624e03d92b919f83b7971d4b66
+  test: f07999861f05488a494da624efb0e1acd26260e1a2e782f862c94d02a933acea
+phase7_report_hashes:
+  PHASE_07A_GATE.json: dd2fb61fe91364be38a9ed3b4dc215b147e1b7424489392eacae7e1e661cdd17
+  PHASE_07A_LEAKAGE_AUDIT.json: 1b5969fb7bedc734e24e6f5b55cfaeceaf1b6d711ad09170a2619e8c4d18e065
+  PHASE_07A_PREDICTION_SIGNAL_CORRECTION.md: a74460ac0f965f212c88a4e902ffb69fac30bd924fe4b9c3ca37de45235299c5
+  PHASE_07A_SCENARIO_COVERAGE.json: 580df02ca63fd861c991a89c1ffb09535d91fe763472be2d46c1759cfeec1bea
+  PHASE_07A_SIGNAL_AUDIT.json: f64d078ca16e9473d1c65d699118730593a8ffe9bfaca8f22b5c4a181bdb6e2d
+  PHASE_07_PREDICTION_ABLATION_RESULTS.json: a33d3b7fcb4284b710d1509682ea580030dd58c96a15ab975f83c638cb06e351
+  PHASE_07_PREDICTION_FEATURE_IMPORTANCE.json: ac0e2a5f626f7037a252af42103c63d67fa3a89e4f0c60047fba95ac5b01d3b5
+  PHASE_07_PREDICTION_GATE.json: ac832721f2954708f3e8186f71f423cd44995e9e8527c8b68a0a67efd3b37642
+  PHASE_07_PREDICTION_LEAKAGE_AUDIT.json: bc56efd4fc6c20612629364b164adce1c9f167559055c82126d7fadc0352b5b9
+  PHASE_07_PREDICTION_MODELING.md: 88dc8475696394e80241f2b3da8629e0c9ca6a965d8c5ee779ee1ddd975707b7
+  PHASE_07_PREDICTION_RESULTS.json: 42a32aa3800d70117cb6c15efedb5e85b58e2952a4f6c7c6128d066b819cb442
+phase7_model_hashes:
+  selected_prediction_model.joblib: c5bdc99ca05043ccfd8074b0e71946e73b245e05754c561b9d264280cc0a53c8
+  selected_prediction_model.json: a726c421f6f792fa9bf65b45b3c8ce81de039d70d8092bcbe7b7675fb0e663b3
+python: 3.14.2
+packages:
+  numpy: 2.5.3
+  pandas: 3.0.6
+  pyarrow: 25.0.1
+  scikit-learn: 1.9.1
+  xgboost: 3.4.1
+  joblib: 1.6.0
+  PyYAML: 6.0.3
+test_set_used_for_preprocessing_fit: false
+test_set_used_for_feature_selection: false
+test_set_used_for_model_selection: false
+test_set_used_for_threshold_selection: false
+test_set_used_for_hyperparameter_tuning: false
+generated_at: '2026-10-09T15:16:54.198672+00:00'
+runtime_seconds: 273.2

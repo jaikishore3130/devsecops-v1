@@ -1,0 +1,211 @@
+{
+  "groups": {
+    "ALL_SAFE_FEATURES": {
+      "feature_count": 76,
+      "selection": "validation only",
+      "test_metrics_posthoc_not_used_for_selection": {
+        "accuracy": 0.91746,
+        "confusion_matrix": {
+          "fn": 2862,
+          "fp": 1265,
+          "tn": 43212,
+          "tp": 2661
+        },
+        "f1": 0.5632342046777437,
+        "false_negative_rate": 0.5181966322650733,
+        "false_positive_rate": 0.02844166647930391,
+        "pr_auc": 0.606389405993958,
+        "precision": 0.6777890983188997,
+        "recall": 0.48180336773492666,
+        "roc_auc": 0.8204559124319764,
+        "specificity": 0.9715583335206961,
+        "threshold": 0.25
+      },
+      "validation_metrics": {
+        "accuracy": 0.91944,
+        "confusion_matrix": {
+          "fn": 2801,
+          "fp": 1227,
+          "tn": 43282,
+          "tp": 2690
+        },
+        "f1": 0.5718537414965986,
+        "false_negative_rate": 0.5101074485521763,
+        "false_positive_rate": 0.027567458266867375,
+        "pr_auc": 0.6145475728294456,
+        "precision": 0.6867500638243553,
+        "recall": 0.48989255144782373,
+        "roc_auc": 0.8269315626555616,
+        "specificity": 0.9724325417331326,
+        "threshold": 0.25
+      },
+      "validation_threshold": 0.25
+    },
+    "CICD_DEPLOYMENT": {
+      "feature_count": 18,
+      "selection": "validation only",
+      "test_metrics_posthoc_not_used_for_selection": {
+        "accuracy": 0.43334,
+        "confusion_matrix": {
+          "fn": 2032,
+          "fp": 26301,
+          "tn": 18176,
+          "tp": 3491
+        },
+        "f1": 0.19770635707206569,
+        "false_negative_rate": 0.36791598768785083,
+        "false_positive_rate": 0.5913393439305709,
+        "pr_auc": 0.16424748018414645,
+        "precision": 0.11717910848549946,
+        "recall": 0.6320840123121492,
+        "roc_auc": 0.5416098263426712,
+        "specificity": 0.40866065606942914,
+        "threshold": 0.1
+      },
+      "validation_metrics": {
+        "accuracy": 0.44074,
+        "confusion_matrix": {
+          "fn": 2028,
+          "fp": 25935,
+          "tn": 18574,
+          "tp": 3463
+        },
+        "f1": 0.1985152913525753,
+        "false_negative_rate": 0.3693316335822255,
+        "false_positive_rate": 0.5826911411175268,
+        "pr_auc": 0.17498003968794926,
+        "precision": 0.1177971290563984,
+        "recall": 0.6306683664177746,
+        "roc_auc": 0.5477531531143965,
+        "specificity": 0.4173088588824732,
+        "threshold": 0.1
+      },
+      "validation_threshold": 0.1
+    },
+    "INFRASTRUCTURE_CLOUD_WORKLOAD": {
+      "feature_count": 24,
+      "selection": "validation only",
+      "test_metrics_posthoc_not_used_for_selection": {
+        "accuracy": 0.5755,
+        "confusion_matrix": {
+          "fn": 2219,
+          "fp": 19006,
+          "tn": 25471,
+          "tp": 3304
+        },
+        "f1": 0.23741601695828693,
+        "false_negative_rate": 0.4017743979721166,
+        "false_positive_rate": 0.4273219866447827,
+        "pr_auc": 0.23767451680477197,
+        "precision": 0.14809502465262214,
+        "recall": 0.5982256020278834,
+        "roc_auc": 0.6272665586146361,
+        "specificity": 0.5726780133552173,
+        "threshold": 0.1
+      },
+      "validation_metrics": {
+        "accuracy": 0.57952,
+        "confusion_matrix": {
+          "fn": 2155,
+          "fp": 18869,
+          "tn": 25640,
+          "tp": 3336
+        },
+        "f1": 0.24090121317157712,
+        "false_negative_rate": 0.3924603897286469,
+        "false_positive_rate": 0.4239367318969197,
+        "pr_auc": 0.23946398393802476,
+        "precision": 0.15023643323575772,
+        "recall": 0.6075396102713532,
+        "roc_auc": 0.6310345484793245,
+        "specificity": 0.5760632681030803,
+        "threshold": 0.1
+      },
+      "validation_threshold": 0.1
+    },
+    "NETWORK_SECURITY": {
+      "feature_count": 23,
+      "selection": "validation only",
+      "test_metrics_posthoc_not_used_for_selection": {
+        "accuracy": 0.89602,
+        "confusion_matrix": {
+          "fn": 3861,
+          "fp": 1338,
+          "tn": 43139,
+          "tp": 1662
+        },
+        "f1": 0.3900035198873636,
+        "false_negative_rate": 0.6990765888104291,
+        "false_positive_rate": 0.030082964228702474,
+        "pr_auc": 0.4163793102106467,
+        "precision": 0.554,
+        "recall": 0.3009234111895709,
+        "roc_auc": 0.6939357068964365,
+        "specificity": 0.9699170357712975,
+        "threshold": 0.2
+      },
+      "validation_metrics": {
+        "accuracy": 0.89584,
+        "confusion_matrix": {
+          "fn": 3871,
+          "fp": 1337,
+          "tn": 43172,
+          "tp": 1620
+        },
+        "f1": 0.3835227272727273,
+        "false_negative_rate": 0.70497177199053,
+        "false_positive_rate": 0.030038868543440653,
+        "pr_auc": 0.4119162010114261,
+        "precision": 0.5478525532634427,
+        "recall": 0.29502822800947004,
+        "roc_auc": 0.6931905476226758,
+        "specificity": 0.9699611314565594,
+        "threshold": 0.2
+      },
+      "validation_threshold": 0.2
+    },
+    "SAFE_FEATURES_WITHOUT_DERIVED_FEATURES": {
+      "feature_count": 68,
+      "selection": "validation only",
+      "test_metrics_posthoc_not_used_for_selection": {
+        "accuracy": 0.90506,
+        "confusion_matrix": {
+          "fn": 3299,
+          "fp": 1448,
+          "tn": 43029,
+          "tp": 2224
+        },
+        "f1": 0.4837411636759108,
+        "false_negative_rate": 0.5973202969400688,
+        "false_positive_rate": 0.032556152618207164,
+        "pr_auc": 0.5191721773807761,
+        "precision": 0.6056644880174292,
+        "recall": 0.40267970305993117,
+        "roc_auc": 0.7832173640304403,
+        "specificity": 0.9674438473817928,
+        "threshold": 0.25
+      },
+      "validation_metrics": {
+        "accuracy": 0.90598,
+        "confusion_matrix": {
+          "fn": 3265,
+          "fp": 1436,
+          "tn": 43073,
+          "tp": 2226
+        },
+        "f1": 0.4863979023271059,
+        "false_negative_rate": 0.5946093607721726,
+        "false_positive_rate": 0.0322631377923566,
+        "pr_auc": 0.5194205563529378,
+        "precision": 0.6078645548880394,
+        "recall": 0.40539063922782737,
+        "roc_auc": 0.7865022083015023,
+        "specificity": 0.9677368622076434,
+        "threshold": 0.25
+      },
+      "validation_threshold": 0.25
+    }
+  },
+  "selected_model": "xgboost",
+  "selection": "validation only; test metrics reported post-hoc and never used for selection"
+}
