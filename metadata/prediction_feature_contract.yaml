@@ -1,0 +1,51 @@
+status: ACTIVE_FOR_PHASE_7_MODELING
+task: future incident prediction
+dataset: data/processed/prediction/{train,validation,test}.parquet
+dataset_manifest: metadata/prediction_dataset_manifest.json
+observation_window: W = 900 seconds
+prediction_timestamp: prediction_timestamp
+prediction_horizon: H = 900 seconds
+target: future_incident_label
+target_interval: (t, t+H]
+allowed_feature_source: metadata/detection_feature_contract.yaml SAFE_FEATURE classification
+allowed_feature_policy: Use only SAFE_FEATURE fields available at or before prediction_timestamp; fit preprocessing on train only.
+excluded_fields:
+- future_incident_label
+- future_incident_time
+- time_to_incident
+- incident_label
+- incident_type
+- root_cause_category
+- root_component
+- recommended_action
+- all identifiers and grouping keys
+- event_timestamp
+- window_start
+- window_end
+- prediction_timestamp
+excluded_feature_groups:
+- future targets
+- current labels
+- RCA
+- remediation
+- identifiers
+- post-event/recovery fields
+- timestamps used only as metadata
+preprocessing:
+  numeric: train-fitted median imputation, missing indicators, sparse scaling
+  categorical: train-fitted most-frequent imputation, one-hot encoding, unknown-safe
+  validation_test: transform only; never fit
+split_policy: temporal and entity-isolated Phase 5A train/validation/test partitions
+test_policy: test is loaded only after model, feature contract, threshold, and ablations are frozen
+model_selection_metric: pr_auc on validation
+threshold_selection: validation only; evaluate 0.03, 0.04, 0.05, 0.06, 0.07, 0.10, 0.30, 0.50, 0.70
+seed: 20261008
+evaluation_metrics:
+- accuracy
+- precision
+- recall
+- f1
+- roc_auc
+- pr_auc
+- fpr
+- fnr
