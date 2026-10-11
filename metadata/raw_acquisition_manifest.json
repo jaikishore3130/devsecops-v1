@@ -1,0 +1,33 @@
+{
+  "acquisitions": [
+    {
+      "dataset": "UNSW-NB15",
+      "source": "https://zenodo.org/api/records/10140548/files/UNSW-NB15_4.csv/content",
+      "version": "UNSW-NB15 partition 4; Zenodo record 10140548",
+      "license_status": "DECLARED_CC-BY-4.0; verify publication/redistribution terms before release",
+      "acquired_at": "2026-10-08T16:05:00Z",
+      "files": [
+        {
+          "path": "data/external/cybersecurity/unsw_nb15/raw/UNSW-NB15_4.csv",
+          "size_bytes": 97588754,
+          "md5": "f55875cab7f037fdad40b5b737e7db5e",
+          "sha256": "cdf563692d51d405541dd659ddcdad9fa01f001f05fe9fc4b67f00ca12fbc96a"
+        }
+      ]
+    },
+    {
+      "dataset": "UNSW-NB15 documented column manifest",
+      "source": "https://zenodo.org/records/10714999",
+      "version": "UNSW-NB15 no-header release metadata; 49-field original layout documented separately",
+      "license_status": "DECLARED_CC-BY-4.0",
+      "acquired_at": "2026-10-08T16:07:00Z",
+      "files": [
+        {
+          "path": "data/external/cybersecurity/unsw_nb15/metadata/UNSW_NB15_4_COLUMNS.txt",
+          "size_bytes": 475,
+          "sha256": "DOCUMENTED_LOCAL_MANIFEST"
+        }
+      ]
+    }
+  ]
+}

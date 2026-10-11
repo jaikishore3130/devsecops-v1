@@ -1,0 +1,164 @@
+{
+  "importance": {
+    "features": [
+      {
+        "feature": "numeric__anomaly_score",
+        "importance": 0.2663600742816925
+      },
+      {
+        "feature": "numeric__source_count",
+        "importance": 0.13201315701007843
+      },
+      {
+        "feature": "numeric__queue_length",
+        "importance": 0.08656251430511475
+      },
+      {
+        "feature": "numeric__unique_destination_hosts",
+        "importance": 0.06117818132042885
+      },
+      {
+        "feature": "numeric__failure_rate",
+        "importance": 0.06057185307145119
+      },
+      {
+        "feature": "numeric__scheduling_delay_seconds",
+        "importance": 0.05169324949383736
+      },
+      {
+        "feature": "numeric__change_size",
+        "importance": 0.037340447306632996
+      },
+      {
+        "feature": "numeric__failed_auth_attempts",
+        "importance": 0.03496736288070679
+      },
+      {
+        "feature": "numeric__request_rate_rolling_mean",
+        "importance": 0.031344398856163025
+      },
+      {
+        "feature": "numeric__request_rate",
+        "importance": 0.030318427830934525
+      },
+      {
+        "feature": "numeric__network_in_bytes",
+        "importance": 0.02555934526026249
+      },
+      {
+        "feature": "numeric__auth_attempts",
+        "importance": 0.02419431135058403
+      },
+      {
+        "feature": "numeric__unique_destination_ports",
+        "importance": 0.02068358100950718
+      },
+      {
+        "feature": "numeric__retry_count",
+        "importance": 0.019950978457927704
+      },
+      {
+        "feature": "numeric__unique_source_count",
+        "importance": 0.01947764866054058
+      },
+      {
+        "feature": "numeric__network_out_bytes",
+        "importance": 0.013689935207366943
+      },
+      {
+        "feature": "numeric__io_wait",
+        "importance": 0.013184386305510998
+      },
+      {
+        "feature": "numeric__memory_slope",
+        "importance": 0.01136483158916235
+      },
+      {
+        "feature": "numeric__disk_utilization",
+        "importance": 0.010064901784062386
+      },
+      {
+        "feature": "numeric__file_descriptor_usage",
+        "importance": 0.009456218220293522
+      },
+      {
+        "feature": "numeric__successful_auth_attempts",
+        "importance": 0.008544846437871456
+      },
+      {
+        "feature": "numeric__missingindicator_scheduling_delay_seconds",
+        "importance": 0.005271742586046457
+      },
+      {
+        "feature": "numeric__restart_count",
+        "importance": 0.004744619596749544
+      },
+      {
+        "feature": "numeric__pending_tasks",
+        "importance": 0.0037661325186491013
+      },
+      {
+        "feature": "numeric__open_connections",
+        "importance": 0.0034594107419252396
+      },
+      {
+        "feature": "numeric__queue_time_seconds",
+        "importance": 0.0020106781739741564
+      },
+      {
+        "feature": "numeric__missingindicator_unique_destination_hosts",
+        "importance": 0.001727769267745316
+      },
+      {
+        "feature": "numeric__missingindicator_queue_length",
+        "importance": 0.0016726816538721323
+      },
+      {
+        "feature": "numeric__missingindicator_memory_slope",
+        "importance": 0.0015172397252172232
+      },
+      {
+        "feature": "numeric__missingindicator_source_count",
+        "importance": 0.0010416720760986209
+      }
+    ],
+    "method": "gain_or_split_importance_from_final_tree_model"
+  },
+  "leakage_scan": {
+    "forbidden_feature_tokens_found": [],
+    "passed": true,
+    "top_features": [
+      "numeric__anomaly_score",
+      "numeric__source_count",
+      "numeric__queue_length",
+      "numeric__unique_destination_hosts",
+      "numeric__failure_rate",
+      "numeric__scheduling_delay_seconds",
+      "numeric__change_size",
+      "numeric__failed_auth_attempts",
+      "numeric__request_rate_rolling_mean",
+      "numeric__request_rate",
+      "numeric__network_in_bytes",
+      "numeric__auth_attempts",
+      "numeric__unique_destination_ports",
+      "numeric__retry_count",
+      "numeric__unique_source_count",
+      "numeric__network_out_bytes",
+      "numeric__io_wait",
+      "numeric__memory_slope",
+      "numeric__disk_utilization",
+      "numeric__file_descriptor_usage",
+      "numeric__successful_auth_attempts",
+      "numeric__missingindicator_scheduling_delay_seconds",
+      "numeric__restart_count",
+      "numeric__pending_tasks",
+      "numeric__open_connections",
+      "numeric__queue_time_seconds",
+      "numeric__missingindicator_unique_destination_hosts",
+      "numeric__missingindicator_queue_length",
+      "numeric__missingindicator_memory_slope",
+      "numeric__missingindicator_source_count"
+    ]
+  },
+  "selected_model": "xgboost"
+}

@@ -1,0 +1,35 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Environment files
+.env
+.venv/
+venv/
+
+# Large/temporary dataset artifacts (do not commit raw corpora)
+data/external/**/raw/*
+data/external/**/*.zip
+data/external/**/*.gz
+data/external/**/*.tar
+data/external/**/*.tar.gz
+data/external/**/*.7z
+data/external/**/*.parquet
+data/external/**/*.feather
+data/external/**/*.h5
+data/external/**/*.db
+data/external/**/*.sqlite
+
+# Allow audited small evidence files in external data folders
+!data/external/**/README.md
+!data/external/**/*.md
+!data/external/**/*.txt
+!data/external/**/*.proto
+!data/external/**/ACCESS_STATUS.txt
+!data/external/**/*.bib
+
+# Local temp artifacts
+tmp/

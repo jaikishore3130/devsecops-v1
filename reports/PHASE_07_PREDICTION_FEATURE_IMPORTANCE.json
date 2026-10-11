@@ -1,0 +1,164 @@
+{
+  "importance": {
+    "features": [
+      {
+        "feature": "numeric__day_of_week",
+        "importance": 0.0011071460370410367
+      },
+      {
+        "feature": "numeric__test_duration_seconds",
+        "importance": 0.0008365486061502128
+      },
+      {
+        "feature": "numeric__dependency_count",
+        "importance": 0.0006673444726517826
+      },
+      {
+        "feature": "numeric__resource_requests_memory",
+        "importance": 0.0004730262885178499
+      },
+      {
+        "feature": "numeric__missingindicator_port_entropy",
+        "importance": 0.0004319329856915452
+      },
+      {
+        "feature": "numeric__missingindicator_connection_count",
+        "importance": 0.00038925457390951226
+      },
+      {
+        "feature": "numeric__missingindicator_request_rate_rolling_std",
+        "importance": 0.0003803347088087647
+      },
+      {
+        "feature": "numeric__missingindicator_auth_attempts",
+        "importance": 0.0003581082396018169
+      },
+      {
+        "feature": "numeric__rollback_count",
+        "importance": 0.0003364687117926382
+      },
+      {
+        "feature": "numeric__failed_auth_attempts",
+        "importance": 0.0003255956557070491
+      },
+      {
+        "feature": "numeric__build_duration_seconds",
+        "importance": 0.000318847083019054
+      },
+      {
+        "feature": "numeric__instance_count",
+        "importance": 0.0003143123973893165
+      },
+      {
+        "feature": "numeric__queue_length",
+        "importance": 0.000290905319636256
+      },
+      {
+        "feature": "numeric__missingindicator_running_tasks",
+        "importance": 0.00026780135227261886
+      },
+      {
+        "feature": "numeric__thread_count",
+        "importance": 0.0002526258113964147
+      },
+      {
+        "feature": "numeric__deployment_frequency",
+        "importance": 0.00024400743651320153
+      },
+      {
+        "feature": "numeric__missingindicator_unique_destination_ports",
+        "importance": 0.00023502101154371582
+      },
+      {
+        "feature": "numeric__missingindicator_dependency_count",
+        "importance": 0.00023413399171109267
+      },
+      {
+        "feature": "numeric__missingindicator_queue_length",
+        "importance": 0.00023264397099184014
+      },
+      {
+        "feature": "numeric__config_change_count",
+        "importance": 0.00021455718699260606
+      },
+      {
+        "feature": "numeric__missingindicator_config_change_count",
+        "importance": 0.0002032684663690644
+      },
+      {
+        "feature": "numeric__pipeline_duration_seconds",
+        "importance": 0.00019150732694556138
+      },
+      {
+        "feature": "numeric__missingindicator_unique_source_count",
+        "importance": 0.000188002586532416
+      },
+      {
+        "feature": "numeric__missingindicator_request_rate_rolling_mean",
+        "importance": 0.0001699381083258497
+      },
+      {
+        "feature": "numeric__network_in_bytes",
+        "importance": 0.00016975800137441002
+      },
+      {
+        "feature": "numeric__missingindicator_unique_destination_hosts",
+        "importance": 0.0001648763430305289
+      },
+      {
+        "feature": "categorical__environment_staging",
+        "importance": 0.00016430445076729208
+      },
+      {
+        "feature": "numeric__missingindicator_scan_burst_score",
+        "importance": 0.00015390336459911863
+      },
+      {
+        "feature": "numeric__missingindicator_traffic_volume_bytes",
+        "importance": 0.00015380436953392473
+      },
+      {
+        "feature": "numeric__memory_slope",
+        "importance": 0.00014500330055709776
+      }
+    ],
+    "method": "validation_permutation_importance_average_precision"
+  },
+  "leakage_scan": {
+    "forbidden_feature_tokens_found": [],
+    "passed": true,
+    "top_features": [
+      "numeric__day_of_week",
+      "numeric__test_duration_seconds",
+      "numeric__dependency_count",
+      "numeric__resource_requests_memory",
+      "numeric__missingindicator_port_entropy",
+      "numeric__missingindicator_connection_count",
+      "numeric__missingindicator_request_rate_rolling_std",
+      "numeric__missingindicator_auth_attempts",
+      "numeric__rollback_count",
+      "numeric__failed_auth_attempts",
+      "numeric__build_duration_seconds",
+      "numeric__instance_count",
+      "numeric__queue_length",
+      "numeric__missingindicator_running_tasks",
+      "numeric__thread_count",
+      "numeric__deployment_frequency",
+      "numeric__missingindicator_unique_destination_ports",
+      "numeric__missingindicator_dependency_count",
+      "numeric__missingindicator_queue_length",
+      "numeric__config_change_count",
+      "numeric__missingindicator_config_change_count",
+      "numeric__pipeline_duration_seconds",
+      "numeric__missingindicator_unique_source_count",
+      "numeric__missingindicator_request_rate_rolling_mean",
+      "numeric__network_in_bytes",
+      "numeric__missingindicator_unique_destination_hosts",
+      "categorical__environment_staging",
+      "numeric__missingindicator_scan_burst_score",
+      "numeric__missingindicator_traffic_volume_bytes",
+      "numeric__memory_slope"
+    ]
+  },
+  "selected_model": "logistic_regression"
+}

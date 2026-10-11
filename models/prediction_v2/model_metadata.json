@@ -1,0 +1,99 @@
+{
+  "dataset": "/workspaces/devsecops-v1/data/processed/prediction_v2",
+  "dataset_hashes": {
+    "test": "c737990db0e256f116904d4bd1151ea10c62be9bae9b9be202e1a4106188306d",
+    "train": "57f8fc0156fd6ac244c46043958463f12fb954ccd2174dccf9330e6b95de0ba6",
+    "validation": "02d8bec033dc03941e7291cbc014dedc122fb32364547b9d51ff8a2b55d476be"
+  },
+  "feature_count": 76,
+  "final_test_metrics": {
+    "accuracy": 0.9177,
+    "confusion_matrix": {
+      "fn": 2851,
+      "fp": 1264,
+      "tn": 43213,
+      "tp": 2672
+    },
+    "f1": 0.5649645839940797,
+    "false_negative_rate": 0.5162049610718812,
+    "false_positive_rate": 0.028419182948490232,
+    "pr_auc": 0.6071544819890631,
+    "precision": 0.6788617886178862,
+    "recall": 0.48379503892811876,
+    "roc_auc": 0.8208620835428162,
+    "specificity": 0.9715808170515098,
+    "threshold": 0.25
+  },
+  "frozen_at": "2026-10-09T15:02:24.950979+00:00",
+  "hyperparameters": {
+    "logistic_regression": {
+      "C": 1.0,
+      "max_iter": 300,
+      "random_state": 20261008,
+      "solver": "lbfgs"
+    },
+    "random_forest": {
+      "max_depth": 9,
+      "max_features": "sqrt",
+      "min_samples_leaf": 25,
+      "n_estimators": 60,
+      "n_jobs": 2,
+      "random_state": 20261008
+    },
+    "xgboost": {
+      "colsample_bytree": 0.8,
+      "eval_metric": "logloss",
+      "learning_rate": 0.05,
+      "max_depth": 6,
+      "min_child_weight": 5,
+      "n_estimators": 250,
+      "n_jobs": 2,
+      "random_state": 20261008,
+      "reg_lambda": 1.0,
+      "subsample": 0.8,
+      "tree_method": "hist"
+    }
+  },
+  "model_name": "xgboost",
+  "model_reload_identical": true,
+  "preprocessing": {
+    "applied": "frozen transform to validation and test",
+    "categorical": "most-frequent imputation + one-hot (unknown-safe)",
+    "fit_on": "train only",
+    "numeric": "median imputation + missing indicators + StandardScaler"
+  },
+  "seed": 20261008,
+  "test_probability_hash": "a9a2ddb59a0c1a5d674ea6e3ba23d1cfe16a9d6833406c994e306e7bd9b8b307",
+  "threshold": 0.25,
+  "validation_selected_metrics": {
+    "accuracy": 0.91972,
+    "confusion_matrix": {
+      "fn": 2805,
+      "fp": 1209,
+      "tn": 43300,
+      "tp": 2686
+    },
+    "f1": 0.5723417856381845,
+    "false_negative_rate": 0.5108359133126935,
+    "false_positive_rate": 0.027163045676155385,
+    "pr_auc": 0.616019535620379,
+    "precision": 0.689602053915276,
+    "recall": 0.4891640866873065,
+    "roc_auc": 0.8269914197124578,
+    "specificity": 0.9728369543238446,
+    "threshold": 0.25
+  },
+  "versions": {
+    "packages": {
+      "PyYAML": "6.0.3",
+      "joblib": "1.6.0",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "pyarrow": "25.0.1",
+      "scikit-learn": "1.9.1",
+      "xgboost": "3.4.1"
+    },
+    "python": "3.14.2",
+    "seed": 20261008
+  }
+}

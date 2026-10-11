@@ -1,0 +1,51 @@
+generator_version: 1.0.0
+contract_version: 1.0.0
+schema_version: 1.0.0
+master_seed: 20261008
+child_seeds:
+  train:
+    entities: 7518136675125761965
+    scenarios: 7806643185880707105
+    missingness: 8461150948903359699
+  validation:
+    entities: 17783636766459223794
+    scenarios: 11290687525037384427
+    missingness: 12118945696243818314
+  test:
+    entities: 3367821614458045504
+    scenarios: 13948948113754825350
+    missingness: 17500417844669618686
+train_rows: 1000000
+validation_rows: 50000
+test_rows: 50000
+scenario_distribution:
+  none: 0.72
+  D1: 0.06
+  D2: 0.07
+  C1: 0.04
+  C2: 0.04
+  C3: 0.03
+  C4: 0.02
+  C5: 0.02
+entity_configuration:
+  organizations: 40
+  projects: 250
+  services: 2000
+  hosts: 4000
+  workloads: 3000
+  observations_per_entity: 10
+temporal_configuration:
+  observation_window_seconds: 900
+  prediction_horizon_seconds: 900
+missingness_configuration:
+  overall_rate: 0.025
+split_configuration:
+  group_isolation:
+  - organization
+  - project
+  - service
+  - host
+  - workload
+  - incident
+  - window
+  temporal_isolation: disjoint split time ranges

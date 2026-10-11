@@ -1,0 +1,105 @@
+contract_name: devsecops_incident_telemetry_contract
+version: 1.0.0
+status: design_only
+purpose: Authoritative contract for future leakage-safe synthetic development data and reserved external validation data.
+evidence_policy:
+  verified:
+    - UNSW-NB15 bounded partition has 440044 rows and 49 documented fields.
+    - UNSW labels are 79.798838 percent normal and 20.201162 percent attack.
+    - UNSW has 133325 exact duplicate rows, 38 source IPs, 43 destination IPs, and 13 services.
+  documented_only:
+    - Candidate schemas for TravisTorrent, Alibaba ClusterData, Google Cluster Data, CIC-IDS2017, CIC-DDoS2019, and ADFA-LD.
+    - UNSW field names are from a documented layout because the acquired CSV has no header.
+  assumptions:
+    - UUID-style identifiers are generated and are not predictive features.
+    - Incident boundaries and causal labels are synthetic annotations unless independently evidenced.
+entities:
+  organization: {id: org_id, parent: null, primary_key: true}
+  project: {id: project_id, parent: organization, primary_key: true, names_scoped_to: organization}
+  environment: {id: environment_id, parent: project, primary_key: true}
+  service: {id: service_id, parent: environment, primary_key: true}
+  deployment: {id: deployment_id, parent: service, primary_key: true}
+  host: {id: host_id, parent: environment, primary_key: true}
+  workload: {id: workload_id, parent: service, primary_key: true}
+  pipeline: {id: pipeline_id, parent: project, primary_key: true}
+  job: {id: job_id, parent: pipeline, primary_key: true}
+  telemetry_window: {id: window_id, parent: workload, primary_key: true}
+  incident: {id: incident_id, parent: service, primary_key: true}
+  event: {id: event_id, parent: incident, primary_key: true}
+events:
+  canonical_time_field: event_timestamp
+  optional_time_fields: [window_start, window_end, prediction_timestamp, incident_start, incident_end]
+  event_types: [telemetry, deployment, pipeline, workload, network, security, incident, recovery]
+temporal_model:
+  observation_window: W
+  prediction_horizon: H
+  prediction_rule: features are restricted to [t-W, t] and targets refer to (t, t+H]
+  cutoff: prediction_timestamp
+  post_event_rule: observations after t cannot enter prediction features
+identifiers:
+  predictive_features: []
+  grouping_keys: [org_id, project_id, service_id, host_id, workload_id, pipeline_id, incident_id, session_group_id]
+  leakage_control_keys: [org_id, project_id, service_id, host_id, workload_id, incident_id, window_id, session_group_id, source_group_id, destination_group_id]
+  non_feature_identifiers: [org_id, project_id, environment_id, service_id, deployment_id, host_id, workload_id, pipeline_id, job_id, incident_id, event_id, window_id]
+  format: UUID-style strings; names are never primary keys
+  canonical_schema_field_count: 110
+  scope_rules:
+    org_id: globally unique organization identity
+    project_id: unique within organization
+    environment_id: unique within project
+    service_id: unique within environment
+    deployment_id: unique deployment identity
+    host_id: unique within environment
+    workload_id: unique within service
+    pipeline_id: unique within project
+    job_id: unique within pipeline
+    window_id: unique observation-window identity within a split
+    incident_id: unique incident-group identity within service and split
+    event_id: globally unique event identity within the generated dataset
+  control_role: identifiers are grouping, ordering, duplicate-isolation, and leakage-control fields, not default predictive features
+feature_groups:
+  identity_context: [org_id, project_id, environment_id, environment, region, service_id, host_id, workload_id]
+  deployment: [deployment_id, deployment_frequency, deployment_age_seconds, version_age_seconds, change_size, config_change_count, rollback_count]
+  cicd: [pipeline_id, job_id, pipeline_duration_seconds, queue_time_seconds, build_duration_seconds, test_duration_seconds, deployment_duration_seconds, retry_count, job_count, step_count, artifact_count, dependency_count]
+  infrastructure: [cpu_utilization, memory_utilization, disk_utilization, network_in_bytes, network_out_bytes, io_wait, load_average, process_count, thread_count, open_connections, file_descriptor_usage]
+  workload: [task_count, cloud_job_count, instance_count, pending_tasks, running_tasks, failed_tasks, terminated_tasks, resource_requests_cpu, resource_requests_memory, resource_usage_cpu, resource_usage_memory, scheduling_delay_seconds, queue_length, node_pressure, restart_count, eviction_count]
+  network: [src_ip_group, dst_ip_group, src_port, dst_port, protocol, service, connection_count, flow_duration_seconds, bytes_in, bytes_out, packets_in, packets_out, packet_rate, byte_rate, connection_rate]
+  security: [auth_attempts, failed_auth_attempts, successful_auth_attempts, unique_source_count, credential_failure_rate, unique_destination_ports, unique_destination_hosts, connection_attempt_rate, port_entropy, host_entropy, scan_burst_score, request_rate, source_count, source_entropy, traffic_volume_bytes]
+  temporal: [event_timestamp, window_start, window_end, prediction_timestamp, observation_age_seconds, hour_of_day, day_of_week]
+  derived: [cpu_delta, memory_slope, request_rate_rolling_mean, request_rate_rolling_std, failure_rate, retry_rate, burst_score, anomaly_score]
+  labels: [incident_label, incident_type, future_incident_label, future_incident_time, time_to_incident]
+  rca_outputs: [root_cause_category, root_component]
+  remediation_outputs: [recommended_action]
+labels:
+  incident_label: {values: [0, 1], role: detection_target}
+  incident_type: {values: [none, D1, D2, C1, C2, C3, C4, C5], role: incident_taxonomy}
+  future_incident_label: {values: [0, 1], role: prediction_target}
+  root_cause_category: {role: synthetic_classification_target, causal_inference: false}
+  root_component: {role: synthetic_localization_target, causal_inference: false}
+  recommended_action: {role: recommendation_target, outcome_proven: false}
+  forbidden_upstream_predictors: [incident_label, incident_type, attack_cat, build_status, failure_status, root_cause_category, root_component, recommended_action, remediation_success, recovery_time, post_incident_metrics]
+leakage_rules:
+  - Never use values with availability after prediction_timestamp.
+  - Exclude labels, RCA outputs, remediation outputs, final build status, and post-incident fields from upstream inputs.
+  - Derived fields use only declared source fields and lookback windows.
+  - Keep duplicates, repeated identity-time keys, and incident windows within one split.
+  - Fit normalization parameters on training data only.
+split_rules:
+  synthetic: {train_rows_target: 1000000, validation_rows_target: 50000, test_rows_target: 50000, generation_status: not_generated}
+  grouping: organization/project/service/host/workload/session/incident as task-appropriate
+  external: UNSW-NB15 is isolated and never used for generator tuning or model development
+units:
+  utilization: fraction in [0, 1]
+  durations: seconds unless explicitly stated
+  traffic: bytes or packets per second as named
+missingness_policy:
+  allowed: true
+  mechanisms: [random_missing, sensor_specific_missing, telemetry_outage, delayed_metric, environment_unavailable]
+  label_independence: missingness must not deterministically identify a label
+duplicate_policy:
+  observed_reference: UNSW exact duplicate rate 30.298107 percent is evidence, not a synthetic target
+  split_constraint: exact and near duplicates cannot cross splits
+external_validation_policy:
+  unsw_nb15: reserved_partial_candidate
+  prohibited: training, tuning, threshold selection, generator calibration
+  limitations: one partition, no embedded header, duplicate burden, no causal/RCA/remediation truth

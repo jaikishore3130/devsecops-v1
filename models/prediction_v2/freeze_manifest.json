@@ -1,0 +1,13 @@
+{
+  "dataset": "/workspaces/devsecops-v1/data/processed/prediction_v2",
+  "dataset_hashes": {
+    "test": "c737990db0e256f116904d4bd1151ea10c62be9bae9b9be202e1a4106188306d",
+    "train": "57f8fc0156fd6ac244c46043958463f12fb954ccd2174dccf9330e6b95de0ba6",
+    "validation": "02d8bec033dc03941e7291cbc014dedc122fb32364547b9d51ff8a2b55d476be"
+  },
+  "feature_count": 76,
+  "frozen_at": "2026-10-09T15:02:24.950979+00:00",
+  "model_name": "xgboost",
+  "seed": 20261008,
+  "threshold": 0.25
+}

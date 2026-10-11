@@ -1,0 +1,51 @@
+{
+  "dataset_name": "ALIBABA_CLUSTERDATA",
+  "dataset_dir": "/home/runner/work/devsecops-v1/devsecops-v1/data/external/devops/alibaba_clusterdata",
+  "file_count": 4,
+  "total_size_bytes": 28962,
+  "profiles": [
+    {
+      "name": "trace_2018.md",
+      "relative_path": "trace_2018.md",
+      "extension": ".md",
+      "size_bytes": 6527,
+      "sha256": "daea8423c65cd24995500fcb6da103b1d4dec505f7b13ff2f6975caae0ede2fc",
+      "text_profile": {
+        "line_count": 111,
+        "char_count": 6517,
+        "first_nonempty_line": "# 1 Introduction"
+      }
+    },
+    {
+      "name": "schema_v2018.txt",
+      "relative_path": "schema_v2018.txt",
+      "extension": ".txt",
+      "size_bytes": 8125,
+      "sha256": "731763f9570c555cce6e27bab66fc6cf2aa19ea98ee9607063845bd37bb5af2e",
+      "text_profile": {
+        "line_count": 103,
+        "char_count": 8125,
+        "first_nonempty_line": "# Schema"
+      }
+    },
+    {
+      "name": "fetchData.sh",
+      "relative_path": "fetchData.sh",
+      "extension": ".sh",
+      "size_bytes": 582,
+      "sha256": "99ad99ce1379cc12d5e0842500df2c5e76dd41c03a774b1d54e84361b7212dcf"
+    },
+    {
+      "name": "README.md",
+      "relative_path": "README.md",
+      "extension": ".md",
+      "size_bytes": 13728,
+      "sha256": "4a4843de730fc2bfb725fb37c6bbe46257c54087161ea7b9329a2663c97a6a90",
+      "text_profile": {
+        "line_count": 73,
+        "char_count": 13725,
+        "first_nonempty_line": "# Alibaba Cluster Trace Program"
+      }
+    }
+  ]
+}

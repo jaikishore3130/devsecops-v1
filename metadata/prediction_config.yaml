@@ -1,0 +1,36 @@
+task: Phase 7 future incident prediction only
+seed: 20261008
+dataset: /workspaces/devsecops-v1/data/processed/prediction
+training_rows_available: 1000000
+training_rows_used: 250000
+sampling: deterministic pandas sample without replacement from train only
+observation_window_seconds: 900
+prediction_horizon_seconds: 900
+target: future_incident_label
+dataset_hashes:
+  train: 2135c42f7822dd4ef49b5c7c327c8a2d64fc79b838da15a2302d641b8a736a77
+  validation: 2faf5916b041d9f0bc19bb94c0976dd3fd95f9624e03d92b919f83b7971d4b66
+  test: f07999861f05488a494da624efb0e1acd26260e1a2e782f862c94d02a933acea
+original_phase5_hashes:
+  train: 8eff3b18a1a842212efa442336ee008838cd05bd92854f5b95d0ae527a48b984
+  validation: 03639436e44de2c6e95199c80033aed01ac4dfb842e7dd9b08c158a61893a68d
+  test: 5e7630dd74b2b0397b7b7663679bb03bbb6d8b837329421dfba59701e643b551
+phase6_detection_hashes:
+  selected_detection_model.joblib: fb71ddcbdd987e5b1aedd8a70773c6d1cbcb8fdc260cc71762d19f322cbe1ba4
+  selected_detection_model.json: efaf02b5bcff02869539c03006dc3af1d88ea9fabd2514a812fc88d5b65bc8dc
+python: 3.14.2
+packages:
+  numpy: 2.5.3
+  pandas: 3.0.6
+  pyarrow: 25.0.1
+  scikit-learn: 1.9.1
+  xgboost: 3.4.1
+  joblib: 1.6.0
+  PyYAML: 6.0.3
+test_set_used_for_preprocessing_fit: false
+test_set_used_for_feature_selection: false
+test_set_used_for_model_selection: false
+test_set_used_for_threshold_selection: false
+test_set_used_for_hyperparameter_tuning: false
+model_artifact: /workspaces/devsecops-v1/models/prediction/selected_prediction_model.joblib
+training_timestamp: '2026-10-09T06:16:38.938602+00:00'

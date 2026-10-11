@@ -1,0 +1,20 @@
+{
+  "dataset_name": "TRAVISTORRENT",
+  "dataset_dir": "/home/runner/work/devsecops-v1/devsecops-v1/data/external/devops/travistorrent",
+  "file_count": 1,
+  "total_size_bytes": 4321,
+  "profiles": [
+    {
+      "name": "travistorrent_tools_README.md",
+      "relative_path": "travistorrent_tools_README.md",
+      "extension": ".md",
+      "size_bytes": 4321,
+      "sha256": "b19a0f3193afd01c2a2b7d0ffb593586a5ff676557b5a7d10de054736a3d5079",
+      "text_profile": {
+        "line_count": 110,
+        "char_count": 4319,
+        "first_nonempty_line": "This repository contains the tools used to generate the data on [TravisTorrent](http://travistorrent.testroots.org):"
+      }
+    }
+  ]
+}

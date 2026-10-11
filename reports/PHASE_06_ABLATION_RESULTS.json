@@ -1,0 +1,102 @@
+{
+  "all_safe_features": {
+    "feature_count": 76,
+    "validation_metrics": {
+      "accuracy": 0.99826,
+      "confusion_matrix": {
+        "fn": 59,
+        "fp": 28,
+        "tn": 36033,
+        "tp": 13880
+      },
+      "f1": 0.9968757855424283,
+      "false_negative_rate": 0.004232728316235024,
+      "false_positive_rate": 0.0007764621058761543,
+      "pr_auc": 0.9999376118060761,
+      "precision": 0.997986770204199,
+      "recall": 0.995767271683765,
+      "roc_auc": 0.9999753667669464,
+      "threshold": 0.5
+    }
+  },
+  "cicd_deployment": {
+    "feature_count": 18,
+    "validation_metrics": {
+      "accuracy": 0.78172,
+      "confusion_matrix": {
+        "fn": 10909,
+        "fp": 5,
+        "tn": 36056,
+        "tp": 3030
+      },
+      "f1": 0.3570166136443973,
+      "false_negative_rate": 0.7826242915560657,
+      "false_positive_rate": 0.0001386539474778847,
+      "pr_auc": 0.508931518443876,
+      "precision": 0.9983525535420099,
+      "recall": 0.21737570844393428,
+      "roc_auc": 0.6105992842846166,
+      "threshold": 0.5
+    }
+  },
+  "infrastructure_cloud_workload": {
+    "feature_count": 24,
+    "validation_metrics": {
+      "accuracy": 0.9205,
+      "confusion_matrix": {
+        "fn": 2664,
+        "fp": 1311,
+        "tn": 34750,
+        "tp": 11275
+      },
+      "f1": 0.8501413760603205,
+      "false_negative_rate": 0.19111844465169667,
+      "false_positive_rate": 0.03635506502870137,
+      "pr_auc": 0.9371748166903349,
+      "precision": 0.8958366438900366,
+      "recall": 0.8088815553483033,
+      "roc_auc": 0.9653909919266797,
+      "threshold": 0.5
+    }
+  },
+  "network_security": {
+    "feature_count": 23,
+    "validation_metrics": {
+      "accuracy": 0.86802,
+      "confusion_matrix": {
+        "fn": 6302,
+        "fp": 297,
+        "tn": 35764,
+        "tp": 7637
+      },
+      "f1": 0.6983038449229644,
+      "false_negative_rate": 0.4521127771002224,
+      "false_positive_rate": 0.00823604448018635,
+      "pr_auc": 0.7918783026861171,
+      "precision": 0.9625661709100075,
+      "recall": 0.5478872228997776,
+      "roc_auc": 0.8387942918516367,
+      "threshold": 0.5
+    }
+  },
+  "safe_without_derived": {
+    "feature_count": 68,
+    "validation_metrics": {
+      "accuracy": 0.99486,
+      "confusion_matrix": {
+        "fn": 162,
+        "fp": 95,
+        "tn": 35966,
+        "tp": 13777
+      },
+      "f1": 0.9907590521736004,
+      "false_negative_rate": 0.011622067580170745,
+      "false_positive_rate": 0.002634425002079809,
+      "pr_auc": 0.9993250103642407,
+      "precision": 0.9931516724336793,
+      "recall": 0.9883779324198293,
+      "roc_auc": 0.9996837786792222,
+      "threshold": 0.5
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "diagnostic_reproducibility": true,
+    "entity_isolation": true,
+    "future_times_valid": true,
+    "future_types_exist": true,
+    "latent_signal_above_independence": true,
+    "no_model_training": true,
+    "no_target_proxy": true,
+    "not_all_at_horizon": true,
+    "old_artifacts_preserved": true,
+    "row_counts": true,
+    "schema": true,
+    "variable_lead_times": true
+  },
+  "dataset": "/workspaces/devsecops-v1/data/processed/prediction_v2",
+  "model_training": "NOT_STARTED",
+  "phase8_started": false,
+  "status": "COMPLETE"
+}
